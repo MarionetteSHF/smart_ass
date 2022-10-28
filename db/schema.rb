@@ -24,6 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_21_013643) do
     t.string "user_id"
     t.string "phone"
     t.string "name"
+    t.string "email"
     t.string "encrypted_password"
   end
 

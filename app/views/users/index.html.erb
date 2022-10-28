@@ -1,24 +1,38 @@
-<!--  This file is app/views/movies/index.html.erb -->
-<h2>All Movies</h2>
+<h2>Register</h2>
 
-<%#  Part 2: Start here... %>
+<%= form_tag movies_path, :class => 'form' do %>
+  <%= label :user, :name, 'Name', :class => 'col-form-label' %>
+  <%= text_field :user, :name, :class => 'form-control' %>
 
-<table class="table table-striped col-md-12" id="movies">
-  <thead>
-    <tr>
-      <th>User Name</th>
-      
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td>
-          <%= user.name %>
-        </td>
-        
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= link_to 'Add new movie', new_movie_path, :class => 'btn btn-primary' %>
+  <%= label :user, :email, 'Email address', :class => 'col-form-label' %>
+  <%= text_field :user, :email, :class => 'form-control' %>
+
+  <%= label :user, :phone, 'Phone Number', :class => 'col-form-label' %>
+  <%= text_field :user, :phone, :class => 'form-control' %>
+
+  <%= label :user, :password, 'Password', :class => 'col-form-label' %>
+  <%= text_field :user, :password, :class => 'form-control' %>
+
+  <%= label :user, :re_password, 'Confirm Password', :class => 'col-form-label' %>
+  <%= text_field :user, :re_password, :class => 'form-control' %>
+  <%= submit_tag 'Register', :class => 'btn btn-primary' %>
+  
+<% end %>
+
+
+<h2>log in</h2>
+
+<%= form_tag movies_path, :class => 'form' do %>
+  
+
+  <%= label :user, :email, 'Email address', :class => 'col-form-label' %>
+  <%= text_field :user, :email, :class => 'form-control' %>
+
+
+
+  <%= label :user, :password, 'Password', :class => 'col-form-label' %>
+  <%= text_field :user, :password, :class => 'form-control' %>
+<%= submit_tag 'Login', :class => 'btn btn-primary' %>
+ 
+
+<% end %>
