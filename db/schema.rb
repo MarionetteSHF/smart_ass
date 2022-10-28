@@ -20,4 +20,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_21_013643) do
     t.datetime "updated_at", precision: nil, null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "user_id"
+    t.string "phone"
+    t.string "name"
+    t.string "encrypted_password"
+  end
+
 end
