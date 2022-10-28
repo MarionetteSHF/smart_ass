@@ -1,13 +1,57 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/jialin/Documents/1. Columbia University/Fall 2022/COMSW4152 - Engineering Software-as-a-Service/SaaS Final Project/smart_ass/app/helpers/application_helper.rb": {
+      "F:/graduate/Second_year/Fall/software_as_a_service/smart_ass/app/helpers/application_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/jialin/Documents/1. Columbia University/Fall 2022/COMSW4152 - Engineering Software-as-a-Service/SaaS Final Project/smart_ass/app/models/user.rb": {
+      "F:/graduate/Second_year/Fall/software_as_a_service/smart_ass/app/controllers/users_controller.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
+      "F:/graduate/Second_year/Fall/software_as_a_service/smart_ass/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "F:/graduate/Second_year/Fall/software_as_a_service/smart_ass/app/models/user.rb": {
         "lines": [
           1,
           null,
@@ -22,7 +66,7 @@
           null
         ]
       },
-      "/Users/jialin/Documents/1. Columbia University/Fall 2022/COMSW4152 - Engineering Software-as-a-Service/SaaS Final Project/smart_ass/app/channels/application_cable/channel.rb": {
+      "F:/graduate/Second_year/Fall/software_as_a_service/smart_ass/app/channels/application_cable/channel.rb": {
         "lines": [
           0,
           0,
@@ -32,7 +76,7 @@
         "branches": {
         }
       },
-      "/Users/jialin/Documents/1. Columbia University/Fall 2022/COMSW4152 - Engineering Software-as-a-Service/SaaS Final Project/smart_ass/app/channels/application_cable/connection.rb": {
+      "F:/graduate/Second_year/Fall/software_as_a_service/smart_ass/app/channels/application_cable/connection.rb": {
         "lines": [
           0,
           0,
@@ -42,15 +86,7 @@
         "branches": {
         }
       },
-      "/Users/jialin/Documents/1. Columbia University/Fall 2022/COMSW4152 - Engineering Software-as-a-Service/SaaS Final Project/smart_ass/app/controllers/application_controller.rb": {
-        "lines": [
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/Users/jialin/Documents/1. Columbia University/Fall 2022/COMSW4152 - Engineering Software-as-a-Service/SaaS Final Project/smart_ass/app/controllers/movies_controller.rb": {
+      "F:/graduate/Second_year/Fall/software_as_a_service/smart_ass/app/controllers/movies_controller.rb": {
         "lines": [
           0,
           null,
@@ -118,45 +154,7 @@
         "branches": {
         }
       },
-      "/Users/jialin/Documents/1. Columbia University/Fall 2022/COMSW4152 - Engineering Software-as-a-Service/SaaS Final Project/smart_ass/app/controllers/users_controller.rb": {
-        "lines": [
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          null,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/Users/jialin/Documents/1. Columbia University/Fall 2022/COMSW4152 - Engineering Software-as-a-Service/SaaS Final Project/smart_ass/app/jobs/application_job.rb": {
+      "F:/graduate/Second_year/Fall/software_as_a_service/smart_ass/app/jobs/application_job.rb": {
         "lines": [
           0,
           null,
@@ -169,7 +167,7 @@
         "branches": {
         }
       },
-      "/Users/jialin/Documents/1. Columbia University/Fall 2022/COMSW4152 - Engineering Software-as-a-Service/SaaS Final Project/smart_ass/app/mailers/application_mailer.rb": {
+      "F:/graduate/Second_year/Fall/software_as_a_service/smart_ass/app/mailers/application_mailer.rb": {
         "lines": [
           0,
           0,
@@ -179,7 +177,7 @@
         "branches": {
         }
       },
-      "/Users/jialin/Documents/1. Columbia University/Fall 2022/COMSW4152 - Engineering Software-as-a-Service/SaaS Final Project/smart_ass/app/models/application_record.rb": {
+      "F:/graduate/Second_year/Fall/software_as_a_service/smart_ass/app/models/application_record.rb": {
         "lines": [
           0,
           0,
@@ -188,7 +186,7 @@
         "branches": {
         }
       },
-      "/Users/jialin/Documents/1. Columbia University/Fall 2022/COMSW4152 - Engineering Software-as-a-Service/SaaS Final Project/smart_ass/app/models/movie.rb": {
+      "F:/graduate/Second_year/Fall/software_as_a_service/smart_ass/app/models/movie.rb": {
         "lines": [
           0,
           null,
@@ -201,6 +199,6 @@
         }
       }
     },
-    "timestamp": 1666993653
+    "timestamp": 1666998190
   }
 }
