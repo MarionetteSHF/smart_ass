@@ -67,7 +67,36 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
+  # gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+
+# rotten_potato
+# for Heroku deployment 
+group :development, :test do
+  # gem 'sqlite3', '1.3.11'
+  gem 'byebug'
+  gem 'database_cleaner'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'rspec-rails'
+  gem 'ZenTest'
+end
+
+group :test do
+  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails-training-wheels'
+  gem 'simplecov', :require => false
+end
+group :production do
+  gem 'pg'
+end
+
+# Gems used only for assets and not required
+# in production environments by default.
+
+gem 'sass-rails'
+gem 'uglifier'
+gem 'jquery-rails'
