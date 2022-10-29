@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     # Making "internal" methods private is not required, but is a common practice.
     # This helps make clear which methods respond to requests, and which ones do not.
     def user_params
-      params.require(:params).permit(:name, :email, :phone, :encrypted_password)
+      params.require(:user).permit(:name, :email, :phone, :encrypted_password)
     end
 
 end
