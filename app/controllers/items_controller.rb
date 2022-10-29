@@ -3,7 +3,11 @@ class ItemsController < ApplicationController
 
   # GET /items or /items.json
   def index
-    @items = Item.all
+    category = params[:category]
+    @items = Item.search_by_category(category)
+    if @items.empty?
+      @items = Item.all
+    end
   end
 
   # GET /items/1 or /items/1.json
@@ -51,6 +55,8 @@ class ItemsController < ApplicationController
     flash[:notice] = "Item '#{@item.title}' has been deleted"
     redirect_to items_path
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
