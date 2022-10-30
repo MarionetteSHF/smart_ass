@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
   resources :items
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :movies
   resources :users
-  root :to => redirect('/register')
-  # root 'movies#index'
-  # root :to => redirect('/movies')
+  resources :new
+  root :to => redirect('/items')
   get '/register', to: 'users#index', as: 'users_path'
   post 'sessions/create'
   get '/login', to: 'sessions#new', as: 'login_path'
