@@ -1,31 +1,27 @@
-<!--  app/views/movies/show.html.erb -->
-<h2>Details about <em><%= @item.title %></em></h2>
+<!DOCTYPE html>
+<html>
+  <body>
+    <main class="container">
+      <h1 class="mt-5"><%= @item.title %></h1>
+      <p class='lead'>$<%= @item.price %></p>
+      <p class='lead'>$<%= @item.category %></p>
+      <h4>Description:</h4>
+      <p id="description">
+        <%= @item.description %>
+      </p>
+      <% if @item.neededItem %>
+          <p> Please contact if you want to Sell </p>
+      <% else %>
+          <p> Please contact if you want to Buy </p>
+      <% end %>
 
-<% if @item.neededItem %>
-    <p> Please contact if you want to Sell </p>
-<% else %>
-    <p> Please contact if you want to Buy </p>
-<% end %>
-
-<ul id="details">
-  <li>
-    Item:
-    <%= @item.title %>
-  </li>
-  <li>
-    price:
-    <%= @item.price %>
-  </li>
-
-</ul>
-
-<h3>Description:</h3>
-<p id="description">
-  <%= @item.description %>
-</p>
-
-<div class="row">
-  <%= link_to 'Edit', edit_item_path(@item), class: 'btn btn-primary' %>
-  <%= button_to "delete", item_path(@item), method: :delete, form:{ data: { turbo_method: :delete}}, class: 'btn btn-danger' %>  
-  <%= link_to 'Back to item list', items_path, class: 'btn btn-primary' %>
-</div>
+      <div class="row">
+        <%= link_to 'Back to item list', items_path, class: 'btn btn-primary m-1' %>
+      </div>
+      <div class="row">
+        <%= link_to 'Edit', edit_item_path(@item), class: 'btn btn-secondary m-1' %>
+        <%= button_to "delete", item_path(@item), method: :delete, form:{ data: { turbo_method: :delete}}, class: 'btn btn-secondary m-1' %>  
+      </div>
+    </main>
+  </body>
+</html>

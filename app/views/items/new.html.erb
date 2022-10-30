@@ -1,26 +1,41 @@
-<h2>Create New Item</h2>
+<!DOCTYPE html>
+<html>
+  <body>
+    <main class="container">
+      <div class="pt-5 text-center">
+        <h2>Post Your Item</h2>
+        <p class="lead">Please fill in the blank below to post your product.</p>
+      </div>
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <hr class="mb-4">
+          <%= form_tag items_path, class: 'form-horizontal' do %>
+            <%= label :item, :title, 'Title', class: 'col-form-label' %>
+            <%= text_field :item, :title, class: 'form-control mb-3' %>
 
-<%= form_tag items_path, class: 'form' do %>
-  <%= label :item, :title, 'Title', class: 'col-form-label' %>
-  <%= text_field :item, :title, class: 'form-control' %>
+            <%= label :item, :description, 'Description', class: 'col-form-label' %>
+            <%= text_field :item, :description, class: 'form-control mb-3' %>
 
-  <%= label :item, :description, 'Description', class: 'col-form-label' %>
-  <%= text_field :item, :description, class: 'form-control' %>
+            <%= label :item, :category, 'Category', class: 'col-form-label' %>
+            <%= text_field :item, :category, class: 'form-control mb-3' %>
 
+            <%= label :item, :price, 'Price', class: 'col-form-label' %>
+            <%= text_field :item, :price, class: 'form-control mb-3' %>
 
-<%= label :item, :category, 'Category', class: 'col-form-label' %>
-  <%= text_field :item, :category, class: 'form-control' %>
+            <%= label :item, :number, 'Number', class: 'col-form-label' %>
+            <%= text_field :item, :number, class: 'form-control mb-3' %>
 
-  <%= label :item, :price, 'Price', class: 'col-form-label' %>
-  <%= text_field :item, :price, class: 'form-control' %>
-
-    <%= label :item, :number, 'Number', class: 'col-form-label' %>
-  <%= text_field :item, :number, class: 'form-control' %>
-
-  <%= label :item, :neededItem, 'Buy or Sell', class: 'col-form-label' %>
-  <%= select :item, :neededItem, [['Buy', true], ['Sell', false]], {}, {class: 'form-control col-1'} %>
-
-  <br/>
-  <%= submit_tag 'Save Changes', class: 'btn btn-primary' %>
-  <%= link_to 'Cancel', items_path, class: 'btn btn-secondary' %>
-<% end %>
+            <%= label :item, :neededItem, 'Buy or Sell', class: 'col-form-label' %>
+            <%= select :item, :neededItem, [['Buy', true], ['Sell', false]], {}, {class: 'form-control mb-5'} %>
+            <div class='row mb-3'>
+              <div class='col text-center'>
+                <%= submit_tag 'Save Changes', class: 'btn btn-primary mr-3 ml-5' %>
+                <%= link_to 'Cancel', items_path, class: 'btn btn-secondary' %>
+              </div>
+            </div> 
+          <% end %>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

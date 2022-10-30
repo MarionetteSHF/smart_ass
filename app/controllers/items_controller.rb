@@ -3,7 +3,11 @@ class ItemsController < ApplicationController
 
   # GET /items or /items.json
   def index
-    @items = Item.all
+    category = params[:category]
+    @items = Item.search_by_category(category)
+    if @items.empty?
+      @items = Item.all
+    end
   end
 
   # GET /items/1 or /items/1.json
@@ -23,16 +27,24 @@ class ItemsController < ApplicationController
 
   # POST /items or /items.json
   def create
-    @item = Item.create!(item_params)
-    redirect_to items_path
+    @item = Item.new(item_params)
+    if @item.save
+      flash[:notice] = "#{@item.title} was successfully created"
+      redirect_to item_path(@item)
+    else
+      render 'new', :status=>422
+    end
   end
 
   # PATCH/PUT /items/1 or /items/1.json
   def update
     @item = Item.find params[:id]
-    @item.update(item_params)
-    flash[:notice] = "#{@item.title} was successfully updated."
-    redirect_to item_path(@item)
+    if @item.update(item_params)
+      flash[:notice] = "#{@item.title} was successfully updated."
+      redirect_to item_path(@item)
+    else
+      render 'edit', :status=>422
+    end
 
   end
 
@@ -43,6 +55,8 @@ class ItemsController < ApplicationController
     flash[:notice] = "Item '#{@item.title}' has been deleted"
     redirect_to items_path
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
