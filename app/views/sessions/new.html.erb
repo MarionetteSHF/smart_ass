@@ -1,0 +1,22 @@
+<h2>log in</h2>
+
+<% if flash[:login_error] %>
+
+  <p><%= flash[:login_error] %></p>
+
+<% end %>
+
+
+<%= form_for :session, :class => 'form', url: :sessions_create do %>
+
+  <%= label :session, :email, 'Email address', :class => 'col-form-label' %>
+  <%= text_field :session, :email, :class => 'form-control' %>
+
+
+
+  <%= label :session, :password, 'Password', :class => 'col-form-label' %>
+  <%= text_field :session, :password, :class => 'form-control' %>
+<%= submit_tag 'Login', :class => 'btn btn-primary' %>
+ 
+
+<% end %>

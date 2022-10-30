@@ -13,26 +13,9 @@
   <%= label :user, :password, 'Password', :class => 'col-form-label' %>
   <%= text_field :user, :password, :class => 'form-control' %>
 
-  <%= label :user, :re_password, 'Confirm Password', :class => 'col-form-label' %>
-  <%= text_field :user, :re_password, :class => 'form-control' %>
+  
   <%= submit_tag 'Register', :class => 'btn btn-primary' %>
   
 <% end %>
 
 
-<h2>log in</h2>
-
-<%= form_tag users_path, :class => 'form' do %>
-  
-
-  <%= label :user, :email, 'Email address', :class => 'col-form-label' %>
-  <%= text_field :user, :email, :class => 'form-control' %>
-
-
-
-  <%= label :user, :password, 'Password', :class => 'col-form-label' %>
-  <%= text_field :user, :password, :class => 'form-control' %>
-<%= submit_tag 'Login', :class => 'btn btn-primary' %>
- 
-
-<% end %>

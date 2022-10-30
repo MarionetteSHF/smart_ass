@@ -17,9 +17,9 @@ movies = [{:title => 'Aladdin', :rating => 'G', :release_date => '25-Nov-1992'},
       {:title => 'Chicken Run', :rating => 'G', :release_date => '21-Jun-2000'},
  ]
 
- users = [{:user_id => '1', :phone => '6462345569', :email => 'wangdazhuang@gmail.com', :encrypted_password => '25-Nov-1992', :name => 'hanfushi'},
-    {:user_id => '2', :phone => '6462345512', :email => 'wangdazhu@gmail.com', :encrypted_password => '25-Nov-1992', :name => 'wuwei'},
-    {:user_id => '3', :phone => '6362345569', :email => 'wangda@gmail.com', :encrypted_password => '25-Nov-1992', :name => 'ziniu liu'},
+ users = [{:phone => '6462345569', :email => 'wangdazhuang@gmail.com', :password => '25-Nov-1992', :name => 'hanfushi'},
+    { :phone => '6462345512', :email => 'wangdazhu@gmail.com', :password => '25-Nov-1992', :name => 'wuwei'},
+    { :phone => '6362345569', :email => 'wangda@gmail.com', :password => '25-Nov-1992', :name => 'ziniu liu'},
  ]
 
  users.each do |user|

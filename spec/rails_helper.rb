@@ -2,6 +2,7 @@
 require 'spec_helper'
 require 'simplecov'
 SimpleCov.start
+SimpleCov.start 'rails' unless SimpleCov.running
 
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
