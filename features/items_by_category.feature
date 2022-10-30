@@ -8,7 +8,7 @@ Background: movies in database
 
   Given the following items exist:
   | title        | category  | number  | neededItem | price |
-  | iphone       | IT        | 1       | false      | 500   |
+  | imac         |           | 1       | false      | 500   |
   | ipad         |           | 1       | false      | 1000  |
   | bed frame    | furniture | 1       | true       | 100   |
   | BMW          | vehicle   | 1       | false      | 40000 |
@@ -22,13 +22,12 @@ Scenario: add category to existing item
 
 Scenario: search category to 
   When I go to the details page for "BMW"
-  And  I follow "Category"
+  And  I follow "Show Category"
   And  I should see "Audi"
   And  I should not see "iphone"
 
 Scenario: cannot find same category if it is empty
-  Given I am on the details page for "ipad"
-  Then  I should not see "IT"
-  When I follow "Category"
+  Given I am on the details page for "imac"
+  When I follow "Show Category"
   Then  I should be on the items page
-  And I should see "'ipad' has no category info"
+  And I should see "'imac' has no category info"

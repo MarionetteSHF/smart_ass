@@ -21,7 +21,7 @@
       <div class="row">
         <%= link_to 'Edit', edit_item_path(@item), class: 'btn btn-secondary m-1' %>
         <%= button_to "delete", item_path(@item), method: :delete, form:{ data: { turbo_method: :delete}}, class: 'btn btn-secondary m-1' %>  
-        <%= link_to "Category", search_category_path(@item) %>
+        <%= link_to "Show Category", search_category_path(@item) %>
       </div>
     </main>
   </body>
