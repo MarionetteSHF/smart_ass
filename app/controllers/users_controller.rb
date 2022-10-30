@@ -2,7 +2,7 @@ class UsersController < ApplicationController
     
 
     def new
-        @user = User.new
+        # @user = User.new
     end
     
     def index
@@ -18,9 +18,9 @@ class UsersController < ApplicationController
             # flash[:notice] = "#{@user.name} was successfully created"
             # redirect_to items_path
             redirect_to items_path
-        else
-            render "new"
         end
+        #     render "new"
+        # end
     end
 
     

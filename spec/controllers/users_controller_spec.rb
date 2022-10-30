@@ -7,5 +7,11 @@ RSpec.describe UsersController, type: :controller do
             # expect(flash[:notice]).to match(/abc was successfully created/)
             expect(response).to redirect_to(items_path)
         end
+
+        # it "return 200 for going to a new page" do
+      
+        #     get :new
+        #     expect(response).to have_http_status(:ok)
+        # end
     end
 end
