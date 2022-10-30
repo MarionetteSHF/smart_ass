@@ -5,11 +5,7 @@ Background:
 
 Scenario: Error on empty fields
     When I press "Register"
-    Then "Name" field should have the error
-    And "Email address" field should have the error
-    And "Phone Number" field should have the error
-    And "Password" field should have the error
-    And I should see "please fill in the following information"
+    Then I should see "please fill in all information"
 
 Scenario: Register successfully
     When I fill in "Name" with "abc"
