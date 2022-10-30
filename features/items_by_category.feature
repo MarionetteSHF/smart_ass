@@ -6,16 +6,16 @@ Feature: search for items by category
 
 Background: movies in database
 
-  Given the following movies exist:
+  Given the following items exist:
   | title        | category  | number  | neededItem | price |
   | iphone       | IT        | 1       | false      | 500   |
   | ipad         |           | 1       | false      | 1000  |
   | bed frame    | furniture | 1       | true       | 100   |
   | BMW          | vehicle   | 1       | false      | 40000 |
 
-Scenario: add director to existing movie
+Scenario: add category to existing item
   When I go to the edit page for "ipad"
-  And  I fill in "category" with "IT"
-  And  I press "Update"
+  And  I fill in "Category" with "IT"
+  And  I press "Save Changes"
   Then the category of "ipad" should be "IT"
 

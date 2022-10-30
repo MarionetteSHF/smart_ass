@@ -1,7 +1,7 @@
 
 Given /the following items exist/ do |items|
     items.hashes.each do |item|
-      Movie.create item
+      Item.create item
     end
   end
   
@@ -24,7 +24,7 @@ Given /the following items exist/ do |items|
     end
   end
   
-  Then /the director of "(.*)" should be "(.*)"/ do |movie_name, director_name|
-    expect(page).to have_content(movie_name)
-    expect(page).to have_content(director_name)
+  Then /the category of "(.*)" should be "(.*)"/ do |item_title, category|
+    expect(page).to have_content(item_title)
+    expect(page).to have_content(category)
   end
