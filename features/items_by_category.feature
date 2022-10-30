@@ -12,6 +12,7 @@ Background: movies in database
   | ipad         |           | 1       | false      | 1000  |
   | bed frame    | furniture | 1       | true       | 100   |
   | BMW          | vehicle   | 1       | false      | 40000 |
+  | Audi         | vehicle   | 1       | false      | 45000 |
 
 Scenario: add category to existing item
   When I go to the edit page for "ipad"
@@ -19,3 +20,15 @@ Scenario: add category to existing item
   And  I press "Save Changes"
   Then the category of "ipad" should be "IT"
 
+Scenario: search category to 
+  When I go to the details page for "BMW"
+  And  I follow "Category"
+  And  I should see "Audi"
+  And  I should not see "iphone"
+
+Scenario: cannot find same category if it is empty
+  Given I am on the details page for "ipad"
+  Then  I should not see "IT"
+  When I follow "Category"
+  Then  I should be on the items page
+  And I should see "'ipad' has no category info"

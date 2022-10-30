@@ -18,5 +18,6 @@ module SmartassFirstIter
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.active_support.remove_deprecated_time_with_zone_name = false
   end
 end

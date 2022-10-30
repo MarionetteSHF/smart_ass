@@ -24,7 +24,7 @@ module NavigationHelpers
     when /^the edit page for "(.*)"$/ 
       edit_item_path(Item.find_by_title($1).id)
     when /^the details page for "(.*)"$/
-      movie_path(Movie.find_by_title($1).id)
+      item_path(Item.find_by_title($1).id)
     when /^the Similar Movies page for "(.*)"$/
       director_path(Movie.find_by_title($1).id)
     else

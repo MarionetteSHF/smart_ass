@@ -56,7 +56,17 @@ class ItemsController < ApplicationController
     redirect_to items_path
   end
 
-
+  def search_by_category
+    @item = Item.find params[:id]
+    cat = @item.category
+    if cat.empty? or cat.nil?
+      flash[:notice] = "'#{@item.title}' has no category info"
+      redirect_to items_path
+    else
+      @items = Item.search_by_category(cat)
+      render 'index'
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
