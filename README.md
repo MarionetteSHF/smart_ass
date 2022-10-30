@@ -3,8 +3,11 @@
 ### Team Members
 
 Ziniu Liu - zl3100
+
 Hanfu Shi - hs3239
+
 Wu Wei - ww2614
+
 Lynn Zhu - jz2969
 
 ### Project Information
