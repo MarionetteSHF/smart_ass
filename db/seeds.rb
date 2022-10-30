@@ -13,6 +13,3 @@
     User.create!(user)
   end
 
- movies.each do |movie|
-    Movie.create!(movie)
-  end
