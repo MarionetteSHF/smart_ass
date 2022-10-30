@@ -11,7 +11,6 @@
    {:title => 'bed', :description => 'a queen size bed', :price => '200', :neededItem=> false, :number=> 1, :category=>"furniture"},
    {:title => 'desk', :description => 'a L shape one', :price => '100', :neededItem=> false, :number=> 1, :category=>"furniture"},
 ]
-
  users = [{:phone => '6462345569', :email => 'wangdazhuang@gmail.com', :password => '25-Nov-1992', :name => 'hanfushi'},
     { :phone => '6462345512', :email => 'wangdazhu@gmail.com', :password => '25-Nov-1992', :name => 'wuwei'},
     { :phone => '6362345569', :email => 'wangda@gmail.com', :password => '25-Nov-1992', :name => 'ziniu liu'},
@@ -20,8 +19,6 @@
  users.each do |user|
     User.create!(user)
   end
-
-
 
   items.each do |item|
    Item.create!(item)

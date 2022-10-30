@@ -17,7 +17,7 @@ class UsersController < ApplicationController
         if @user.save
             # flash[:notice] = "#{@user.name} was successfully created"
             # redirect_to items_path
-            redirect_to login_path
+            redirect_to items_path
         else
             render "new"
         end
