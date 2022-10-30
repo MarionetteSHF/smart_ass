@@ -1,31 +1,61 @@
-<!--  app/views/movies/show.html.erb -->
-<h2>Details about <em><%= @item.title %></em></h2>
+<!DOCTYPE html>
+<html>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Smart-Ass</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-<% if @item.neededItem %>
-    <p> Please contact if you want to Sell </p>
-<% else %>
-    <p> Please contact if you want to Buy </p>
-<% end %>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <%= link_to 'Home', items_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item active">
+              <%= link_to 'Post', items_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+    </header>
 
-<ul id="details">
-  <li>
-    Item:
-    <%= @item.title %>
-  </li>
-  <li>
-    price:
-    <%= @item.price %>
-  </li>
+    <main class="container">
+      <h1 class="mt-5"><%= @item.title %></h1>
+      <p class='lead'>$<%= @item.price %></p>
+      <h4>Description:</h4>
+      <p id="description">
+        <%= @item.description %>
+      </p>
+      <% if @item.neededItem %>
+          <p> Please contact if you want to Sell </p>
+      <% else %>
+          <p> Please contact if you want to Buy </p>
+      <% end %>
 
-</ul>
-
-<h3>Description:</h3>
-<p id="description">
-  <%= @item.description %>
-</p>
-
-<div class="row">
-  <%= link_to 'Edit', edit_item_path(@item), class: 'btn btn-primary' %>
-  <%= button_to "delete", item_path(@item), method: :delete, form:{ data: { turbo_method: :delete}}, class: 'btn btn-danger' %>  
-  <%= link_to 'Back to item list', items_path, class: 'btn btn-primary' %>
-</div>
+      <div class="row">
+        <%= link_to 'Back to item list', items_path, class: 'btn btn-primary m-1' %>
+      </div>
+      <div class="row">
+        <%= link_to 'Edit', edit_item_path(@item), class: 'btn btn-secondary m-1' %>
+        <%= button_to "delete", item_path(@item), method: :delete, form:{ data: { turbo_method: :delete}}, class: 'btn btn-secondary m-1' %>  
+      </div>
+    </main>
+  </body>
+</html>
