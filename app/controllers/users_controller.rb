@@ -10,17 +10,20 @@ class UsersController < ApplicationController
     end
 
     def create
-        # puts params
-        # user_params[:user_id] = User.set_user_id
+        # || user_params[:password].empty? || user_params[:phone].empty? || user_params[:email].empty?
+        if user_params[:name].empty? || user_params[:password].empty? || user_params[:phone].empty? || user_params[:email].empty?
+            flash.now[:register_error] = "please fill in all information"
+            
+            render "index"
+            return
+        end
         
         @user = User.create!(user_params)
+        
         if @user.save
-            # flash[:notice] = "#{@user.name} was successfully created"
-            # redirect_to items_path
             redirect_to items_path
         end
-        #     render "new"
-        # end
+ 
     end
 
     

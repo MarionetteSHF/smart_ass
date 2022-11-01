@@ -1,5 +1,9 @@
 <h2>Register</h2>
+<% if flash[:register_error] %>
 
+  <p><%= flash[:register_error] %></p>
+
+<% end %>
 <%= form_tag users_path, :class => 'form' do %>
   <%= label :user, :name, 'Name', :class => 'col-form-label' %>
   <%= text_field :user, :name, :class => 'form-control' %>

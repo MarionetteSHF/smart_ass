@@ -1,24 +1,41 @@
-# README
+# SmartAss Iteration 1
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Team Members
 
-Things you may want to cover:
+Ziniu Liu - zl3100
 
-* Ruby version
+Hanfu Shi - hs3239
 
-* System dependencies
+Wu Wei - ww2614
 
-* Configuration
+Lynn Zhu - jz2969
 
-* Database creation
+### Project Information
 
-* Database initialization
+* **Ruby Version:** 3.1.2
 
-* How to run the test suite
+* **Deployement:** https://smart-ass-2022.herokuapp.com/
 
-* Services (job queues, cache servers, search engines, etc.)
+### Instructions and Setup
 
-* Deployment instructions
+1. Clone this repo to your development environment
 
-* ...
+`git clone https://github.com/MarionetteSHF/smart_ass.git`
+
+2. Run `bundle install --without production` to make sure all gems are properly installed
+
+3. Build our initial database schema, and add some seed data
+
+```shell
+bundle exec rake db:migrate
+bundle exec rake db:test:prepare
+bundle exec rake db:seed
+```
+
+4. Test the converage
+
+```shell
+rake spec
+rake cucumber
+```
+
