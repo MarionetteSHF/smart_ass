@@ -4,7 +4,6 @@ Given /the following users exist/ do |users|
     end
   end
   Then /I should see all the users/ do
-    # Make sure that all the movies in the app are visible in the table
     User.all.each do |user|
       step %{I should see "#{user.name}"}
     end

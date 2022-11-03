@@ -4,7 +4,7 @@ Feature: search for items by category
   So that I can find items using filter method
   I want to include and search on category information in items I enter
 
-Background: movies in database
+Background: items in database
 
   Given the following items exist:
   | title        | category  | number  | neededItem | price |
