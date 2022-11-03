@@ -37,4 +37,4 @@ Scenario: Error on empty fields
   And I fill in "Price" with "99"
   And I fill in "Number" with "1"
   And I press "Post"
-  Then I should see "please fill in all information"
+  Then I should see "Title can't be blank"
