@@ -14,7 +14,7 @@ Lynn Zhu - jz2969
 
 * **Ruby Version:** 3.1.2
 
-* **Deployement:** https://smart-ass-2022.herokuapp.com/
+* **Heroku:** https://smart-ass-2022.herokuapp.com/
 
 ### Instructions and Setup
 
