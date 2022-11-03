@@ -38,4 +38,15 @@ bundle exec rake db:seed
 rake spec
 rake cucumber
 ```
-
+5. Start application
+```shell
+bundle exec rails s
+```
+6. routes
+`/items`
+`/items/new`
+`/items/:id`
+`/items/:id/edit`
+`/items/:id/category`
+`/login`
+`/users`
