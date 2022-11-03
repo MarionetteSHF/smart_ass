@@ -32,6 +32,7 @@ class ItemsController < ApplicationController
       flash[:notice] = "#{@item.title} was successfully created"
       redirect_to item_path(@item)
     else
+      flash[:notice] = @item.errors.full_messages
       render 'new', :status=>422
     end
   end
