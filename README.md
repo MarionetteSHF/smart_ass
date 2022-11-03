@@ -23,9 +23,13 @@ Lynn Zhu - jz2969
 
 `git clone https://github.com/MarionetteSHF/smart_ass.git`
 
-2. Run `bundle install --without production` to make sure all gems are properly installed
+2. Switch to iteration-1 branch for grading
 
-3. Build our initial database schema, and add some seed data
+`git chechout iteration-1`
+
+3. Run `bundle install --without production` to make sure all gems are properly installed
+
+4. Build our initial database schema, and add some seed data
 
 ```shell
 bundle exec rake db:migrate
@@ -33,17 +37,17 @@ bundle exec rake db:test:prepare
 bundle exec rake db:seed
 ```
 
-4. Test the converage
+5. Test the converage
 
 ```shell
 rake spec
 rake cucumber
 ```
-5. Start application
+6. Start application
 ```shell
 bundle exec rails s
 ```
-6. Routes
+7. Routes
 ```shell
 /items
 /items/new
