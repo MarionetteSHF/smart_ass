@@ -9,6 +9,9 @@
       <p id="description">
         <%= @item.description %>
       </p>
+      <p class='text-muted'>
+        <small>Updated at <%= @item.updated_at %></small>
+      </p>
       <% if @item.neededItem %>
           <p> Please contact if you want to Sell </p>
       <% else %>
