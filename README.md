@@ -42,11 +42,13 @@ rake cucumber
 ```shell
 bundle exec rails s
 ```
-6. routes
-`/items`
-`/items/new`
-`/items/:id`
-`/items/:id/edit`
-`/items/:id/category`
-`/login`
-`/users`
+6. Routes
+```shell
+/items
+/items/new
+/items/:id
+/items/:id/edit
+/items/:id/category
+/login
+/users
+```
