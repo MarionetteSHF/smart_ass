@@ -15,6 +15,7 @@ Lynn Zhu - jz2969
 * **Ruby Version:** 3.1.2
 
 * **Heroku:** https://smart-ass-2022.herokuapp.com/
+* **Iteration 1 grading branch:** iteration-1
 
 ### Instructions and Setup
 
