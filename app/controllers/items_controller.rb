@@ -1,6 +1,15 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: %i[ show edit update destroy ]
 
+
+  before_action :check_login
+  #check log in
+  def check_login
+    @current_user = session[:user_id]
+    if @current_user = nil
+      redirect_to(sessions_create_path)
+    end
+  end
   # GET /items or /items.json
   def index
     category = params[:category]

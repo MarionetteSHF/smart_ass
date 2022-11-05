@@ -11,7 +11,9 @@ class SessionsController < ApplicationController
    @user = User.find_by(email: user_params[:email])
   
    if !!@user && @user.password == user_params[:password]
-    redirect_to items_path
+
+     session[:user_id] = user.id
+     redirect_to items_path
     # render plain: sprintf("welcome, %s!", @user.name)
  
    else
