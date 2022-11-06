@@ -1,6 +1,6 @@
 class Item < ActiveRecord::Base
     has_many :wishlists
-    has_many :users
+    belongs_to :user
     
     validates :title, :presence=> true
     validates :price, :presence=> true, :unless=>:neededItem
@@ -14,6 +14,6 @@ class Item < ActiveRecord::Base
 
 
     def Item.search_by_user(user_id)
-        # not yet implemented
+        return Item.where(user_id: user_id)
     end
 end

@@ -24,6 +24,7 @@ class UsersController < ApplicationController
             redirect_to items_path
         end
     end
+    
 
     def logout
         session[:user_id] =  nil

@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: %i[ show edit update destroy ]
+  before_action :check_login, except: %i[index show]
+  before_action :check_user_accessibility, only: %i[ edit update destroy ]
 
-
-  before_action :check_login, except:[:index]
   #check log in
   def check_login
     @current_user = session[:user_id]
@@ -10,6 +10,14 @@ class ItemsController < ApplicationController
       redirect_to(login_path)
     end
   end
+
+  def check_user_accessibility
+    if @current_user != @item.user_id
+      flash[:notice] = "You are not authorized to edit this item"
+      redirect_to items_path
+    end
+  end
+
   # GET /items or /items.json
   def index
     category = params[:category]
@@ -37,6 +45,7 @@ class ItemsController < ApplicationController
   # POST /items or /items.json
   def create
     @item = Item.new(item_params)
+    @item.user_id = @current_user
     if @item.save
       flash[:notice] = "#{@item.title} was successfully created"
       redirect_to item_path(@item)
@@ -66,9 +75,9 @@ class ItemsController < ApplicationController
     redirect_to items_path
   end
 
+  # GET /items/category/:category
   def search_by_category
-    @item = Item.find params[:id]
-    cat = @item.category
+    cat = params[:category]
     if cat.empty? or cat.nil?
       flash[:notice] = "'#{@item.title}' has no category info"
       redirect_to items_path
@@ -76,6 +85,11 @@ class ItemsController < ApplicationController
       @items = Item.search_by_category(cat)
       render 'index'
     end
+  end
+
+  def get_items_by_user
+    @items = Item.search_by_user @current_user
+    render 'index'
   end
 
   private

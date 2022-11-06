@@ -3,7 +3,7 @@
   <body>
     <main class="container">
       <h1 class="mt-5"><%= @item.title %></h1>
-      <%= link_to @item.category, search_category_path(@item), class: 'blockquote-footer' %>
+      <%= link_to @item.category, search_category_path(:category=>@item.category), class: 'blockquote-footer' %>
       <p class='lead'>$<%= @item.price %></p>
       <h4>Description:</h4>
       <p id="description">
@@ -25,7 +25,7 @@
 
       <div class="row">
         <%= link_to 'Back to item list', items_path, class: 'btn btn-primary m-1' %>
-        <%= link_to "Show Category", search_category_path(@item), class: 'btn btn-primary m-1' %>
+        <%= link_to "Show Category", search_category_path(:category=>@item.category), class: 'btn btn-primary m-1' %>
       </div>
       <div class="row">
         <%= link_to 'Edit', edit_item_path(@item), class: 'btn btn-secondary m-1' %>
