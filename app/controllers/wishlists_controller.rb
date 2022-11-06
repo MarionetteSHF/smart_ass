@@ -8,10 +8,11 @@ class WishlistsController < ApplicationController
         end
       end
     
-      def index
+    def index
         @user = User.find_by(id: params[:user_id])
-        @item = Item.find_by(id: params[:item_id])
-        @user_wishlists = @user.wishlists
+        @wishlist = Wishlist.find_by(id: session[:user_id])
+        @item = Item.find_by(id: @wishlist.item_id)
+        # @items = @user.wishlist
     end
     
     # GET
