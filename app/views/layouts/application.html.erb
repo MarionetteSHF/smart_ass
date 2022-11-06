@@ -52,7 +52,7 @@
           <div class="d-flex align-items-center">
             <%= link_to 'Login', login_path, class: 'btn btn-link px-3 me-2' %>
             <% if session[:user_id] %>
-              <%= link_to "Wishlist", wishlist_path, class: 'btn btn-link px-3 me-2' %>
+              <%= link_to "Wishlist", wishlists_path, class: 'btn btn-link px-3 me-2' %>
               <%= link_to "Logout", logout_path, class: 'btn btn-link px-3 me-2' %>
             <% else  %>
               <%= link_to 'Sign up for free', users_path, class: 'btn btn-primary me-3' %>

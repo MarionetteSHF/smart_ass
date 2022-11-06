@@ -1,9 +1,9 @@
-<h1><%= @user.name%>'s wishlists</h1>
 
+<h1>Wishlists</h1>
 <div>
     <ol>
-        <% @user_wishlists.each do |wishlist| %>
-            <li><%= link_to("#{wishlist.name}", user_wishlist_path(@user, wishlist)) %></li>
+        <% @item.each do |item| %>
+            <li><%= item.title %></li>
         <% end %>
     </ol>
 </div>

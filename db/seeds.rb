@@ -16,10 +16,17 @@
     { :phone => '6362345569', :email => 'wangda@gmail.com', :password => '25-Nov-1992', :name => 'ziniu liu'},
  ]
 
+ wishlists = [{:user_id => 1, :item_id => 1},
+      {:user_id => 1, :item_id => 2},]
+
  users.each do |user|
     User.create!(user)
-  end
+ end
 
   items.each do |item|
    Item.create!(item)
+  end
+
+  wishlists.each do |wishlist|
+   Wishlist.create!(wishlist)
   end
