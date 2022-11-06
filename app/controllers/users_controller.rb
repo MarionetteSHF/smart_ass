@@ -17,13 +17,17 @@ class UsersController < ApplicationController
             render "index"
             return
         end
-        
         @user = User.create!(user_params)
         
         if @user.save
+            session[:user_id] = @user.id
             redirect_to items_path
         end
- 
+    end
+
+    def logout
+        session[:user_id] =  nil
+        redirect_to items_path
     end
 
     
