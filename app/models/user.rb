@@ -1,2 +1,3 @@
 class User < ActiveRecord::Base
-  end
+  has_one :wishlist
+end

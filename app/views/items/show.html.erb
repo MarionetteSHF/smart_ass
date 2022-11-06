@@ -18,6 +18,11 @@
           <p> Please contact if you want to Buy </p>
       <% end %>
 
+
+      <div class="row">
+        <%= link_to 'Add to Wishlist', wishlists_path, class: 'btn btn-primary m-1' %>
+      </div>
+
       <div class="row">
         <%= link_to 'Back to item list', items_path, class: 'btn btn-primary m-1' %>
         <%= link_to "Show Category", search_category_path(@item), class: 'btn btn-primary m-1' %>

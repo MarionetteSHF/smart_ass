@@ -9,8 +9,6 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Friends app</title>
-
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -53,7 +51,12 @@
 
           <div class="d-flex align-items-center">
             <%= link_to 'Login', login_path, class: 'btn btn-link px-3 me-2' %>
-            <%= link_to 'Sign up for free', users_path, class: 'btn btn-primary me-3' %>
+            <% if session[:user_id] %>
+              <%= link_to "Wishlist", wishlist_path, class: 'btn btn-link px-3 me-2' %>
+              <%= link_to "Logout", logout_path, class: 'btn btn-link px-3 me-2' %>
+            <% else  %>
+              <%= link_to 'Sign up for free', users_path, class: 'btn btn-primary me-3' %>
+            <% end %>
           </div>
         </div>
       </nav>

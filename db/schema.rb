@@ -29,4 +29,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_28_212825) do
     t.string "password"
   end
 
+  create_table "wishlists", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "item_id"
+  end
+  
 end

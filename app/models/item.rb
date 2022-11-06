@@ -1,4 +1,7 @@
 class Item < ActiveRecord::Base
+    has_many :wishlists
+    has_many :users
+    
     validates :title, :presence=> true
     validates :price, :presence=> true, :unless=>:neededItem
 
