@@ -2,12 +2,12 @@ class ItemsController < ApplicationController
   before_action :set_item, only: %i[ show edit update destroy ]
 
 
-  before_action :check_login
+  before_action :check_login, except:[:index]
   #check log in
   def check_login
     @current_user = session[:user_id]
-    if @current_user = nil
-      redirect_to(sessions_create_path)
+    if @current_user == nil
+      redirect_to(login_path)
     end
   end
   # GET /items or /items.json

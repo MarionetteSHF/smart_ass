@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
   
    if !!@user && @user.password == user_params[:password]
 
-     session[:user_id] = user.id
+     session[:user_id] = @user.id
      redirect_to items_path
     # render plain: sprintf("welcome, %s!", @user.name)
  

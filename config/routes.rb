@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post 'sessions/create'
   get '/login', to: 'sessions#new', as: 'login_path'
   post '/login', to: 'sessions#create'
+  get "/logout" => "users#logout", :as => "logout"
   # Defines the root path route ("/")
   # root "articles#index"
 end
