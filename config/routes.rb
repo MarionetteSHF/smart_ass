@@ -8,12 +8,12 @@ Rails.application.routes.draw do
   get '/wishlists', to: 'wishlists#index', as: 'wishlists_path'
   delete '/wishlists', to: 'wishlists#destroy'
   
-  get '/register', to: 'users#index', as: 'users_path'
+  get '/register', to: 'users#index', as: 'register'
   post 'sessions/create'
   get '/login', to: 'sessions#new', as: 'login_path'
   post '/login', to: 'sessions#create'
   get "/logout" => "users#logout", :as => "logout"
-  
+  get "/user", to: "users#show", as: "profile"
   get '/items/:id/category', to: 'items#search_by_category', as: 'search_category'
   # Defines the root path route ("/")
   # root "articles#index"
