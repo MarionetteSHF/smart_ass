@@ -37,7 +37,10 @@
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
                 <a class="card-block stretched-link text-decoration-none" href=<%= item_path(item)%>>
-                  <img class="card-img-top" data-src="./iphone.jpeg" alt="Card image cap">
+                  <%# <img class="card-img-top" data-src="./iphone.jpeg" alt="Card image cap"> %>
+                  <% if item.image.attached? %>
+                    <%= image_tag item.image, :class=>'card-img-top' %>
+                  <% end %>
                   <div class="card-header text-dark"><strong><%= item.title %></strong></div>
                   <div class="card-body">
                     <p class="card-text lead text-dark"><small>$<%= item.price %></small></p>

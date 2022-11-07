@@ -20,11 +20,7 @@ class ItemsController < ApplicationController
 
   # GET /items or /items.json
   def index
-    category = params[:category]
-    @items = Item.search_by_category(category)
-    if @items.empty?
-      @items = Item.all
-    end
+    @items = Item.all.with_attached_image
   end
 
   # GET /items/1 or /items/1.json
@@ -100,6 +96,6 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:title, :description, :category, :price, :number, :neededItem)
+      params.require(:item).permit(:title, :description, :category, :price, :number, :neededItem, :image)
     end
 end

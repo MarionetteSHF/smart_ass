@@ -1,6 +1,7 @@
 class Item < ActiveRecord::Base
     has_many :wishlists
     belongs_to :user
+    has_one_attached :image
     
     validates :title, :presence=> true
     validates :price, :presence=> true, :unless=>:neededItem

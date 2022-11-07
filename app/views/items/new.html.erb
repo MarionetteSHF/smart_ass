@@ -9,24 +9,28 @@
       <div class="row">
         <div class="col-md-8 offset-md-2">
           <hr class="mb-4">
-          <%= form_tag items_path, class: 'form-horizontal' do %>
-            <%= label :item, :title, 'Title', class: 'col-form-label' %>
-            <%= text_field :item, :title, class: 'form-control mb-3' %>
+          <%= form_for (@item), class: 'form-horizontal' do |f| %>
+            <%= f.label :title, 'Title', class: 'col-form-label' %>
+            <%= f.text_field  :title, class: 'form-control mb-3' %>
 
-            <%= label :item, :description, 'Description', class: 'col-form-label' %>
-            <%= text_field :item, :description, class: 'form-control mb-3' %>
+            <%= f.label  :description, 'Description', class: 'col-form-label' %>
+            <%= f.text_field  :description, class: 'form-control mb-3' %>
 
-            <%= label :item, :category, 'Category', class: 'col-form-label' %>
-            <%= text_field :item, :category, class: 'form-control mb-3' %>
+            <%= f.label  :category, 'Category', class: 'col-form-label' %>
+            <%= f.text_field  :category, class: 'form-control mb-3' %>
 
-            <%= label :item, :price, 'Price', class: 'col-form-label' %>
-            <%= text_field :item, :price, class: 'form-control mb-3' %>
+            <%= f.label  :price, 'Price', class: 'col-form-label' %>
+            <%= f.text_field  :price, class: 'form-control mb-3' %>
 
-            <%= label :item, :number, 'Number', class: 'col-form-label' %>
-            <%= text_field :item, :number, class: 'form-control mb-3' %>
+            <%= f.label  :number, 'Number', class: 'col-form-label' %>
+            <%= f.text_field  :number, class: 'form-control mb-3' %> 
 
-            <%= label :item, :neededItem, 'Buy or Sell', class: 'col-form-label' %>
-            <%= select :item, :neededItem, [['Buy', true], ['Sell', false]], {}, {class: 'form-control mb-5'} %>
+            <%= f.label  :neededItem, 'Buy or Sell', class: 'col-form-label' %>
+            <%= f.select  :neededItem, [['Buy', true], ['Sell', false]], {}, {class: 'form-control mb-5'} %>
+
+            <%= f.label  :image, "Image", class: 'col-form-label' %>
+            <%= f.file_field  :image %>
+
             <div class='row mb-3'>
               <div class='col text-center'>
                 <%= submit_tag 'Post', class: 'btn btn-primary mr-3 ml-5' %>
