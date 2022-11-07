@@ -1,9 +1,32 @@
 
-<h1>Wishlists</h1>
-<div>
-    <ol>
-        <% @item.each do |item| %>
-            <li><%= item.title %></li>
-        <% end %>
-    </ol>
-</div>
+
+<!doctype html>
+<html>
+  <body>
+    <main>
+      <div class="album py-5">
+        <div class="container">
+        <h2><%= @user.name%>'s wishlist</h2>
+          <div class="row">
+          <% @items.each do |item| %>
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <a class="card-block stretched-link text-decoration-none" href=<%= item_path(item)%>>
+                  <img class="card-img-top" data-src="./iphone.jpeg" alt="Card image cap">
+                  <div class="card-header text-dark"><strong><%= item.title %></strong></div>
+                  <div class="card-body">
+                    <p class="card-text lead text-dark"><small>$<%= item.price %></small></p>
+                    <p class="card-text text-secondary"><%= item.description %></p>
+                    <p class="card-text"><small class="text-muted"><%= item.updated_at %></small></p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          <% end %>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

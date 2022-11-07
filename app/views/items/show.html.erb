@@ -20,7 +20,11 @@
 
 
       <div class="row">
+      <% if session[:user_id] && Wishlist.find_by(user_id: session[:user_id], item_id: @item.id) %>
+        <%= link_to 'Remove from Wishlist', wishlists_path, class: 'btn btn-primary m-1' %>
+      <% else%>
         <%= link_to 'Add to Wishlist', wishlists_path, class: 'btn btn-primary m-1' %>
+      <% end %>
       </div>
 
       <div class="row">

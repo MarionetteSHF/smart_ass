@@ -6,22 +6,26 @@ class WishlistsController < ApplicationController
         if @current_user = nil
           redirect_to(sessions_create_path)
         end
-      end
-    
-    def index
-        @user = User.find_by(id: params[:user_id])
-        @wishlist = Wishlist.find_by(id: session[:user_id])
-        @item = Item.find_by(id: @wishlist.item_id)
-        # @items = @user.wishlist
     end
     
-    # GET
+    # GET /wishlists
+    def index
+        @user = User.find_by(id: session[:user_id])
+        @wishlist = Wishlist.where(user_id: session[:user_id])
+        item_id_arr = []
+        @wishlist.each do |w|
+            item_id_arr.push(w.item_id)
+        end
+        @items = Item.where(id: item_id_arr)
+    end
+    
+    # GET /waitlists/new
     def new
         @user = User.find_by(id: params[:user_id])
         @wishlist = Wishlist.new
     end
 
-    # POST /users/user_id/wishlist/create
+    # POST /waitlists
     def create
         @user = User.find_by(id: params[:user_id])
         # @user = session[:user_id]
@@ -45,13 +49,14 @@ class WishlistsController < ApplicationController
         end
     end
 
-    # GET /users/user_id/wishlist
-    def show
-        @user = User.find_by(id: params[:user_id])
-        # @user = session[:user_id]
-        @wishlist = Wishlist.find_by(id: params[:id])
-    end
+    # # GET /wishlist
+    # def show
+    #     @user = User.find_by(id: params[:user_id])
+    #     # @user = session[:user_id]
+    #     @wishlist = Wishlist.find_by(id: params[:id])
+    # end
 
+    # DELETE /wishlists
     def destroy
         Wishlist.find(params[:id]).destroy
         flash[:success] = "Wishlist deleted"
