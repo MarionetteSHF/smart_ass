@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
 
   # GET /items or /items.json
   def index
-    @items = Item.all.with_attached_image
+    @items = Item.all.with_attached_images
   end
 
   # GET /items/1 or /items/1.json
@@ -42,6 +42,9 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.user_id = @current_user
+
+    puts item_params[:images]
+
     if @item.save
       flash[:notice] = "#{@item.title} was successfully created"
       redirect_to item_path(@item)
@@ -96,6 +99,6 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:title, :description, :category, :price, :number, :neededItem, :image)
+      params.require(:item).permit(:title, :description, :category, :price, :number, :neededItem, images: [])
     end
 end

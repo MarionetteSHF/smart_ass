@@ -2,6 +2,11 @@
 <html>
   <body>
     <main class="container">
+      
+      <% @item.images.each do |img| %>
+        <%= image_tag img, :class=>'card-img-top' %>
+      <% end %>
+
       <h1 class="mt-5"><%= @item.title %></h1>
       <%= link_to @item.category, search_category_path(:category=>@item.category), class: 'blockquote-footer' %>
       <p class='lead'>$<%= @item.price %></p>
@@ -22,7 +27,6 @@
       <div class="row">
         <%= link_to 'Add to Wishlist', wishlists_path, class: 'btn btn-primary m-1' %>
       </div>
-
       <div class="row">
         <%= link_to 'Back to item list', items_path, class: 'btn btn-primary m-1' %>
         <%= link_to "Show Category", search_category_path(:category=>@item.category), class: 'btn btn-primary m-1' %>

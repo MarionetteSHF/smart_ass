@@ -28,8 +28,8 @@
             <%= f.label  :neededItem, 'Buy or Sell', class: 'col-form-label' %>
             <%= f.select  :neededItem, [['Buy', true], ['Sell', false]], {}, {class: 'form-control mb-5'} %>
 
-            <%= f.label  :image, "Image", class: 'col-form-label' %>
-            <%= f.file_field  :image %>
+            <%= f.label  :images, "Image", class: 'col-form-label' %>
+            <%= f.file_field  :images, multiple: true, direct_upload: true %>
 
             <div class='row mb-3'>
               <div class='col text-center'>
