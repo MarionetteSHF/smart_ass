@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+<main class="container">
+  <div class="pt-5 text-center">
+    <h2>Edit Your profile</h2>
+    <p class="lead">Please fill in the blank below to edit your profile.</p>
+  </div>
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <hr class="mb-4">
+      <%= form_tag user_path(@user), :method=>:put, class: 'form-horizontal' do %>
+        <%= label :user, :name, 'Name', class: 'col-form-label' %>
+        <%= text_field :user, :name, class: 'form-control mb-3' %>
+
+        <%= label :user, :phone, 'Phone', class: 'col-form-label' %>
+        <%= text_field :user, :phone, class: 'form-control mb-3' %>
+
+        <%= label :user, :email, 'Email', class: 'col-form-label' %>
+        <%= text_field :user, :email, class: 'form-control mb-3' %>
+
+        <%#= label :user, :price, 'Price', class: 'col-form-label' %>
+        <%#= text_field :user, :price, class: 'form-control mb-3' %>
+
+
+        <div class='row mb-3'>
+          <div class='col text-center'>
+            <%= submit_tag 'Save Changes', class: 'btn btn-primary mr-3 ml-5' %>
+            <%= link_to 'Cancel', items_path, class: 'btn btn-secondary' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</main>
+</body>
+</html>
+

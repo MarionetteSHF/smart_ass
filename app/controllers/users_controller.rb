@@ -33,7 +33,20 @@ class UsersController < ApplicationController
         redirect_to items_path
     end
 
-    
+    def edit
+        @user = User.find_by_id session[:user_id]
+    end
+
+    def update
+        @user = User.find_by_id session[:user_id]
+        if @user.update(user_params)
+            flash[:notice] = "#{@user.name} was successfully updated."
+            redirect_to profile_path(@user)
+        else
+            render 'edit', :status=>422
+        end
+
+    end
 
     private
     # Making "internal" methods private is not required, but is a common practice.
