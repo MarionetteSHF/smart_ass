@@ -28,12 +28,16 @@ class WishlistsController < ApplicationController
     def create
         # @user = User.find_by(id: session[:user_id])
         # @item = Item.find_by(id: item.id)
-        @wishlist = Wishlist.new do |w|
-            w.user_id = session[:user_id]
-            w.item_id = @item.id
-        end
-        if @wishlist.save
-            flash[:notice] = "#{@item.title} was successfully added to wishlist"
+        row_params = {:user_id => session[:user_id], :item_id => params[:id]}
+        @new_wish_row = Wishlist.create!(row_params)
+        puts params[:id]
+        puts session[:user_id]
+        # @wishlist = Wishlist.new do |w|
+        #     w.user_id = session[:user_id]
+        #     w.item_id = :id
+        # end
+        if @new_wish_row.save
+            flash[:notice] = " was successfully added to wishlist"
             redirect_to wishlists_path
         end
     end
@@ -47,11 +51,11 @@ class WishlistsController < ApplicationController
 
     # DELETE /wishlists
     def destroy
-        @item = Item.find_by_id params[:id]
-        @wishlist = Wishlist.find(@item.id)
+
+        @wishlist = Wishlist.where(item_id: params[:id], user_id: session[:user_id]).first
         # @wishlist = Wishlist.find_by_id :id
         puts "here"
-        puts @wishlist
+        puts @wishlist.user_id
         @wishlist.destroy
         flash[:success] = "Wishlist deleted"
         redirect_to wishlists_path

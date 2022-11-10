@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   resources :new
   resources :wishlists
   
-  get '/wishlists', to: 'wishlists#index', as: 'wishlists_path'
-  delete '/wishlists', to: 'wishlists#destroy'
+  get '/wishlists/:id/add', to: 'wishlists#create', as: 'add_wishlists'
+  delete '/wishlists/:id/delete', to: 'wishlists#destroy', as: 'delete_wish'
   
   get '/register', to: 'users#index', as: 'register'
   post 'sessions/create'

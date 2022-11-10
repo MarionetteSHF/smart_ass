@@ -21,9 +21,9 @@
 
       <div class="row">
       <% if session[:user_id] && Wishlist.find_by(user_id: session[:user_id], item_id: @item.id) %>
-        <%= button_to "Remove from Wishlist", wishlists_path(@item), method: :delete, data:{confirm: 'Are you sure?'}, class: 'btn btn-primary m-1' %>
+        <%= button_to "Remove from Wishlist", delete_wish_path, method: :delete,  class: 'btn btn-primary m-1' %>
       <% else%>
-        <%= button_to 'Add to Wishlist', wishlists_path, class: 'btn btn-primary m-1' %>
+        <%= link_to 'Add to Wishlist', add_wishlists_path, class: 'btn btn-primary m-1' %>
       <% end %>
       </div>
 
