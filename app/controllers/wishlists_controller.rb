@@ -3,7 +3,7 @@ class WishlistsController < ApplicationController
     
     def check_login
         @current_user = session[:user_id]
-        if @current_user = nil
+        if @current_user == nil
           redirect_to(sessions_create_path)
         end
     end
@@ -21,35 +21,24 @@ class WishlistsController < ApplicationController
     
     # GET /waitlists/new
     def new
-        @user = User.find_by(id: params[:user_id])
         @wishlist = Wishlist.new
     end
 
     # POST /waitlists
     def create
-        @user = User.find_by(id: params[:user_id])
-        # @user = session[:user_id]
-        @item = Item.find params[:id]
-        @wishlist = Wishlist.new(wishlist_params)
-        if @item.save
-            flash[:notice] = "#{@item.title} was successfully added to wishlist"
-            redirect_to item_path(@item)
-        else
-            flash[:notice] = @item.errors.full_messages[0]
-            render 'new'
+        # @user = User.find_by(id: session[:user_id])
+        # @item = Item.find_by(id: item.id)
+        @wishlist = Wishlist.new do |w|
+            w.user_id = session[:user_id]
+            w.item_id = @item.id
         end
-
-        @user = User.find_by(id: params[:user_id])
-        @wishlist = Wishlist.new(wishlist_params)
-        @wishlist.user = @user
         if @wishlist.save
-            redirect_to user_wishlist_path(@user, @wishlist)
-        else
-            render 'new'
+            flash[:notice] = "#{@item.title} was successfully added to wishlist"
+            redirect_to wishlists_path
         end
     end
 
-    # # GET /wishlist
+    # # GET /wishlists
     # def show
     #     @user = User.find_by(id: params[:user_id])
     #     # @user = session[:user_id]
@@ -58,9 +47,14 @@ class WishlistsController < ApplicationController
 
     # DELETE /wishlists
     def destroy
-        Wishlist.find(params[:id]).destroy
+        @item = Item.find_by_id params[:id]
+        @wishlist = Wishlist.find(@item.id)
+        # @wishlist = Wishlist.find_by_id :id
+        puts "here"
+        puts @wishlist
+        @wishlist.destroy
         flash[:success] = "Wishlist deleted"
-        redirect_to item_path(:wishlist_id => @wishlist.id)
+        redirect_to wishlists_path
     end
 
     private
