@@ -6,7 +6,9 @@
     <main>
       <div class="album py-5">
         <div class="container">
-        <h2><%= @user.name%>'s wishlist</h2>
+        <% if @user %>
+          <h2><%= @user.name%>'s wishlist</h2>
+        <% end %>
           <div class="row">
           <% @items.each do |item| %>
             <div class="col-md-4">
