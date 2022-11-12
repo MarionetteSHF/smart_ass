@@ -3,12 +3,6 @@
   <body>
     <main class="container">
       <div class="row">
-      <% if session[:user_id] && Wishlist.find_by(user_id: session[:user_id], item_id: @item.id) %>
-        <%= button_to "Remove from Wishlist", delete_wish_path, method: :delete,  class: 'btn btn-primary m-1' %>
-      <% else%>
-        <%= link_to 'Add to Wishlist', add_wishlists_path, class: 'btn btn-primary m-1' %>
-      <% end %>
-      </div>
         <div class="col-6">
           <div id="carouselExampleIndicators" class="carousel slide mt-5" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -52,7 +46,11 @@
             <small>Updated at <%= @item.updated_at %></small>
           </p>
           <div class="row pl-2">
-            <%= link_to 'Add to Wishlist', wishlists_path, class: 'btn btn-primary m-1' %>
+            <% if session[:user_id] && Wishlist.find_by(user_id: session[:user_id], item_id: @item.id) %>
+        <%= button_to "Remove from Wishlist", delete_wish_path, method: :delete,  class: 'btn btn-primary m-1' %>
+      <% else%>
+        <%= link_to 'Add to Wishlist', add_wishlists_path, class: 'btn btn-primary m-1' %>
+      <% end %>
             <%= link_to "Show Category", search_category_path(:category=>@item.category), class: 'btn btn-primary m-1' %>
           </div>
           <% if @item.user_id == @current_user %>
@@ -63,7 +61,7 @@
           <% end %>
         </div>
       </div>
-      
+      </div>
       <div class="row">
         <h2 class="mt-5">Comment</h2>
       </div>
