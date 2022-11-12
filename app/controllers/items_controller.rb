@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: %i[ show edit update destroy ]
+  before_action :check_login, except: %i[index show]
+  before_action :check_user_accessibility, only: %i[ edit update destroy ]
 
-
-  before_action :check_login, except:[:index]
   #check log in
   def check_login
     @current_user = session[:user_id]
@@ -10,13 +10,17 @@ class ItemsController < ApplicationController
       redirect_to(login_path)
     end
   end
+
+  def check_user_accessibility
+    if @current_user != @item.user_id
+      flash[:notice] = "You are not authorized to edit this item"
+      redirect_to items_path
+    end
+  end
+
   # GET /items or /items.json
   def index
-    category = params[:category]
-    @items = Item.search_by_category(category)
-    if @items.empty?
-      @items = Item.all
-    end
+    @items = Item.all.with_attached_images
   end
 
   # GET /items/1 or /items/1.json
@@ -37,6 +41,10 @@ class ItemsController < ApplicationController
   # POST /items or /items.json
   def create
     @item = Item.new(item_params)
+    @item.user_id = @current_user
+
+    puts item_params[:images]
+
     if @item.save
       flash[:notice] = "#{@item.title} was successfully created"
       redirect_to item_path(@item)
@@ -49,6 +57,7 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1 or /items/1.json
   def update
     @item = Item.find params[:id]
+    @item.images.purge
     if @item.update(item_params)
       flash[:notice] = "#{@item.title} was successfully updated."
       redirect_to item_path(@item)
@@ -61,14 +70,15 @@ class ItemsController < ApplicationController
   # DELETE /items/1 or /items/1.json
   def destroy
     @item = Item.find_by_id params[:id]
+    @item.images.purge
     @item.destroy
     flash[:notice] = "Item '#{@item.title}' has been deleted"
     redirect_to items_path
   end
 
+  # GET /items/category/:category
   def search_by_category
-    @item = Item.find params[:id]
-    cat = @item.category
+    cat = params[:category]
     if cat.empty? or cat.nil?
       flash[:notice] = "'#{@item.title}' has no category info"
       redirect_to items_path
@@ -76,6 +86,11 @@ class ItemsController < ApplicationController
       @items = Item.search_by_category(cat)
       render 'index'
     end
+  end
+
+  def get_items_by_user
+    @items = Item.search_by_user @current_user
+    render 'index'
   end
 
   private
@@ -86,6 +101,6 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:title, :description, :category, :price, :number, :neededItem)
+      params.require(:item).permit(:title, :description, :category, :price, :number, :neededItem, images: [])
     end
 end
