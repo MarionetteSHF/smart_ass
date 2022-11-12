@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: %i[ show edit update destroy ]
-  before_action :check_login, except: %i[index show]
+  before_action :check_login, except: %i[index]
   before_action :check_user_accessibility, only: %i[ edit update destroy ]
 
   #check log in
