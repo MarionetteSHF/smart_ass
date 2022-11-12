@@ -3,8 +3,11 @@ class SessionsController < ApplicationController
   def new
  
   end
- 
-  
+
+  def show
+    # id = @user.id # retrieve movie ID from URI route
+    @user = User.find(session[:user_id])
+  end
  
   def create
  
