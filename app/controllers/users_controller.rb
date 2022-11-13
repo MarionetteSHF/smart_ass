@@ -40,8 +40,8 @@ class UsersController < ApplicationController
 
     def update
         @user = User.find_by_id params[:id]
-        if user_params[:name].empty? || user_params[:email].empty?
-            flash[:notice] = "Name and email can not be empty"
+        if user_params[:name].empty? || user_params[:email].empty? || user_params[:phone].empty?
+            flash[:notice] = "Please fill in all fields below."
             redirect_to edit_user_path(@user)
             return
         end

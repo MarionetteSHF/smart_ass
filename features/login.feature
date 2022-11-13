@@ -1,5 +1,5 @@
-Feature: Login
-I want to login on SmartAss
+Feature: Login/Logout
+I want to login or logout on SmartAss
 
 Background:
     Given the following users exist:
@@ -23,3 +23,10 @@ Scenario: Login successfully
     And I fill in "Password" with "25-Nov-1992"
     And I press "Login"
     Then I go to the items page
+
+Scenario: Login successfully
+    When I fill in "Email address" with "wangdazhuang@gmail.com"
+    And I fill in "Password" with "25-Nov-1992"
+    And I press "Login"
+    And I follow "Logout"
+    Then I should be on the items page
