@@ -6,12 +6,16 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
- items = [{:title => 'iphone', :description => 'a new one', :price => '900', :neededItem=> false, :number=> 1, :category=>"IT"},
-   {:title => 'ipad', :description => 'a used one', :price => '500', :neededItem=> false, :number=> 1, :category=>"IT"},
-   {:title => 'bed', :description => 'a queen size bed', :price => '200', :neededItem=> false, :number=> 1, :category=>"furniture"},
-   {:title => 'desk', :description => 'a L shape one', :price => '100', :neededItem=> false, :number=> 1, :category=>"furniture"},
+ items = [
+   {:title => 'iphone', :description => 'a new one', :price => '900', :neededItem=> false, :number=> 1, :category=>"IT", :user_id=>"1"},
+   {:title => 'ipad', :description => 'a used one', :price => '500', :neededItem=> false, :number=> 1, :category=>"IT", :user_id=>"1"},
+   {:title => 'bed', :description => 'a queen size bed', :price => '200', :neededItem=> false, :number=> 1, :category=>"furniture", :user_id=>"1"},
+   {:title => 'desk', :description => 'a L shape one', :price => '100', :neededItem=> false, :number=> 1, :category=>"furniture", :user_id=>"1"},
+   {:title => 'mouse', :description => 'a used mouse', :price => '20', :neededItem=> true, :number=> 1, :category=>"IT", :user_id=>"2"},
 ]
- users = [{:phone => '6462345569', :email => 'wangdazhuang@gmail.com', :password => '25-Nov-1992', :name => 'hanfushi'},
+ users = [
+    {:phone => '1234567777', :email => 'wangdazhuang@gmail.com', :password => 'testuser', :name => 'testuser'},
+    {:phone => '6462345569', :email => 'wangdazhuang@gmail.com', :password => '25-Nov-1992', :name => 'hanfushi'},
     { :phone => '6462345512', :email => 'wangdazhu@gmail.com', :password => '25-Nov-1992', :name => 'wuwei'},
     { :phone => '6362345569', :email => 'wangda@gmail.com', :password => '25-Nov-1992', :name => 'ziniu liu'},
  ]

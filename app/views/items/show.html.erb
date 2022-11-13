@@ -2,38 +2,68 @@
 <html>
   <body>
     <main class="container">
-      <h1 class="mt-5"><%= @item.title %></h1>
-      <%= link_to @item.category, search_category_path(@item), class: 'blockquote-footer' %>
-      <p class='lead'>$<%= @item.price %></p>
-      <h4>Description:</h4>
-      <p id="description">
-        <%= @item.description %>
-      </p>
-      <p class='text-muted'>
-        <small>Updated at <%= @item.updated_at %></small>
-      </p>
-      <% if @item.neededItem %>
-          <p> Please contact if you want to Sell </p>
-      <% else %>
-          <p> Please contact if you want to Buy </p>
-      <% end %>
-
-
       <div class="row">
-      <% if session[:user_id] && Wishlist.find_by(user_id: session[:user_id], item_id: @item.id) %>
-        <%= button_to "Remove from Wishlist", delete_wish_path, method: :delete,  class: 'btn btn-primary m-1' %>
-      <% else%>
-        <%= link_to 'Add to Wishlist', add_wishlists_path, class: 'btn btn-primary m-1' %>
-      <% end %>
+        <div class="col-6">
+          <div id="carouselExampleIndicators" class="carousel slide mt-5" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <% for i in 1...@item.images.length() %>
+                <li data-target="#carouselExampleIndicators" data-slide-to="<%=i%>"></li>
+              <% end %>
+            </ol>
+            <div class="carousel-inner">
+              <% for i in (0...@item.images.length()) do %>    
+                <div class="carousel-item <%= i == 0 ? 'active' : '' %>">
+                  <%= image_tag @item.images[i], class: 'd-block w-100' %>
+                </div>
+              <% end %>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-6 pl-5">
+          <h1 class="mt-5"><%= @item.title %></h1>
+          <%= link_to @item.category, search_category_path(:category=>@item.category), class: 'blockquote-footer' %>
+          <p class='lead'>$<%= @item.price %></p>
+          <h4>Description:</h4>
+          <p id="description">
+            <%= @item.description %>
+          </p>
+          <h4>Contact with Seller:</h4>
+          <p class='blockquote-footer'><em>Have questions? Comment first!</em></p>
+          <p>
+            <%= (User.find @item.user_id).email %>
+          </p>
+          <p class='text-muted'>
+            <small>Updated at <%= @item.updated_at %></small>
+          </p>
+          <div class="row pl-2">
+            <% if session[:user_id] && Wishlist.find_by(user_id: session[:user_id], item_id: @item.id) %>
+              <%= button_to "Remove from Wishlist", delete_wish_path, method: :delete,  class: 'btn btn-primary m-1' %>
+            <% else%>
+              <%= link_to 'Add to Wishlist', add_wishlists_path, class: 'btn btn-primary m-1' %>
+            <% end %>
+            <%= link_to "Show Category", search_category_path(:category=>@item.category), class: 'btn btn-primary m-1' %>
+          </div>
+          <% if @item.user_id == @current_user %>
+            <div class="row pl-2">
+              <%= link_to 'Edit', edit_item_path(@item), class: 'btn btn-secondary m-1' %>
+              <%= button_to "Delete", item_path(@item), method: :delete, form:{ data: { turbo_method: :delete}}, class: 'btn btn-secondary m-1' %>  
+            </div>
+          <% end %>
+        </div>
       </div>
-
-      <div class="row">
-        <%= link_to 'Back to item list', items_path, class: 'btn btn-primary m-1' %>
-        <%= link_to "Show Category", search_category_path(@item), class: 'btn btn-primary m-1' %>
       </div>
       <div class="row">
-        <%= link_to 'Edit', edit_item_path(@item), class: 'btn btn-secondary m-1' %>
-        <%= button_to "Delete", item_path(@item), method: :delete, form:{ data: { turbo_method: :delete}}, class: 'btn btn-secondary m-1' %>  
+        <h2 class="mt-5">Comment</h2>
       </div>
     </main>
   </body>
