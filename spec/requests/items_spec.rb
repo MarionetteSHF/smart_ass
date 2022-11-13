@@ -17,9 +17,9 @@ RSpec.describe "/items", type: :request do
 #   # This should return the minimal set of attributes required to create a valid
 #   # Item. As you add validations to Item, be sure to
 #   # adjust the attributes here as well.
-#   let(:valid_attributes) {
-#     {:title=>"iPhone", :description=>"a new iphone", :price=>500, :number=>1, :neededItem=>false, :category=>'IT'}
-#   }
+  let(:valid_attributes) {
+    {:title=>"iPhone", :description=>"a new iphone", :price=>500, :number=>1, :neededItem=>false, :category=>'IT'}
+  }
 #
 #   let(:invalid_attributes) {
 #     {:title=>"iPhone", :description=>"a new iphone", :price=>nil, :number=>1, :neededItem=>false, :category=>'IT'}
@@ -87,17 +87,17 @@ RSpec.describe "/items", type: :request do
 #   end
 #
 #   describe "PATCH /update" do
-    context "with valid parameters" do
-      let(:new_attributes) {
-        {:title=>"iPhone", :description=>"a new iphone", :price=>1000, :number=>1, :neededItem=>false, :category=>'IT'}
-      }
-
-      it "updates the requested item" do
-        item = Item.create! valid_attributes
-        patch item_url(item), params: { item: new_attributes }
-        item.reload
-        expect(item.price).to eq(1000)
-      end
+#     context "with valid parameters" do
+#       let(:new_attributes) {
+#         {:title=>"iPhone", :description=>"a new iphone", :price=>1000, :number=>1, :neededItem=>false, :category=>'IT'}
+#       }
+#
+#       it "updates the requested item" do
+#         item = Item.create! valid_attributes
+#         patch item_url(item), params: { item: new_attributes }
+#         item.reload
+#         expect(item.price).to eq(1000)
+#       end
 #
 #       it "redirects to the item" do
 #         item = Item.create! valid_attributes

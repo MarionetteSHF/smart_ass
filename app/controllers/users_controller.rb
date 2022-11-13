@@ -1,12 +1,15 @@
 class UsersController < ApplicationController
-    
 
+    def show
+        # id = @user.id # retrieve movie ID from URI route
+        @user = User.find(params[:id])
+    end
     def new
         # @user = User.new
     end
     
     def index
-        @users = User.all
+
     end
 
     def create
@@ -35,12 +38,15 @@ class UsersController < ApplicationController
     end
 
     def update
-        @user = User.find_by_id session[:user_id]
+        @user = User.find_by_id params[:id]
+        if user_params[:name].empty? || user_params[:email].empty?
+            flash[:notice] = "Name and email can not be empty"
+            redirect_to edit_user_path(@user)
+            return
+        end
         if @user.update(user_params)
             flash[:notice] = "#{@user.name} was successfully updated."
             redirect_to profile_path(@user)
-        else
-            render 'edit', :status=>422
         end
 
     end

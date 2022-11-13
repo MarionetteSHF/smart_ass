@@ -13,8 +13,8 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new', as: 'login_path'
   post '/login', to: 'sessions#create'
   get "/logout" => "users#logout", :as => "logout"
-  get "/user", to: "sessions#show", as: "profile"
-  get "/user/edit", to: "users#edit", as: "edit_profile"
+  get "/users/:id", to: "users#show", as: "profile"
+  get "/users/edit", to: "users#edit", as: "edit_profile"
   get '/items/:id/category', to: 'items#search_by_category', as: 'search_category'
   # Defines the root path route ("/")
   # root "articles#index"

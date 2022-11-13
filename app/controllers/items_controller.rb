@@ -9,9 +9,16 @@ class ItemsController < ApplicationController
     if @current_user == nil
       redirect_to(login_path)
     end
+    @user = User.find(session[:user_id])
   end
   # GET /items or /items.json
   def index
+    id = session[:user_id]
+    if id != nil
+      @user = User.find(session[:user_id])
+    end
+
+    # @user = User.find(session[:user_id])
     category = params[:category]
     @items = Item.search_by_category(category)
     if @items.empty?

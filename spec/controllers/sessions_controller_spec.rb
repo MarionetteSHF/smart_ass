@@ -17,14 +17,5 @@ RSpec.describe SessionsController, type: :controller do
     end
   end
 
-  describe 'show' do
-    it 'should go to profile' do
-      User.create(phone: '6462345569', email: 'wangdazhuang@gmail.com', password: '25-v-1992', name: 'hanfushi')
 
-      session[:user_id] = 1
-      get :show
-      # expect(flash[:notice]).to match(/abc was successfully created/)
-      expect(response).to render_template('sessions/show')
-    end
-  end
 end
