@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "UsersControllers", type: :request do
-    let(:valid_attributes) {
-        {:name => 'abc',  :email => 'abd@gmail.com', :phone => '12345678', :password => 'abcabc'}
-    }
+
 
     describe 'show' do
         it 'should go to profile' do
