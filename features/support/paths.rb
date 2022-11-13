@@ -23,6 +23,8 @@ module NavigationHelpers
       edit_item_path(Item.find_by_title($1).id)
     when /^the details page for "(.*)"$/
       item_path(Item.find_by_title($1).id)
+    when /^the profile page for "(.*)"$/ 
+      user_path(User.find_by_name($1).id)
 
     else
       begin
