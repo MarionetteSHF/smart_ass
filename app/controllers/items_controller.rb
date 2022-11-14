@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
   def check_login
     @current_user = session[:user_id]
     if @current_user == nil
-      redirect_to(login_path)
+      return redirect_to(login_path)
     end
     @user = User.find(session[:user_id])
   end

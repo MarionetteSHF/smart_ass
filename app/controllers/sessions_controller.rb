@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
- 
+    
   end
 
   # def show
@@ -10,12 +10,11 @@ class SessionsController < ApplicationController
   # end
  
   def create
- 
    @user = User.find_by(email: user_params[:email])
-  
    if !!@user && @user.password == user_params[:password]
 
      session[:user_id] = @user.id
+     
      redirect_to items_path
     # render plain: sprintf("welcome, %s!", @user.name)
  
