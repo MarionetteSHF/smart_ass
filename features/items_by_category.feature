@@ -26,19 +26,24 @@ Scenario: add category but not logging in
   And I should see "You are not authorized to edit this item"
 
 Scenario: add category to existing item
-  When I go to the edit page for "ipad"
-  And  I fill in "Category" with "IT"
-  And  I press "Save Changes"
-  Then the category of "ipad" should be "IT"
+  When I already logged in as user "1"
+  And I go to the details page for "imac"
+  And I follow "Edit"
+  Then I should be on the edit page for "imac"
+  And I fill in "Category" with "IT"
+  And I press "Save Changes"
+  Then the category of "imac" should be "IT"
 
 Scenario: search category to 
-  When I go to the details page for "BMW"
+  When I already logged in as user "1"
+  Then I go to the details page for "BMW"
   And  I follow "Show Category"
   And  I should see "Audi"
   And  I should not see "iphone"
 
 Scenario: cannot find same category if it is empty
-  Given I am on the details page for "imac"
-  When I follow "Show Category"
-  Then  I should be on the items page
-  And I should see "'imac' has no category info"
+  When I already logged in as user "2"
+  And I go to the details page for "ipad"
+  And I follow "Show Category"
+  Then I should be on the items page
+  And I should see "'ipad' has no category info"
