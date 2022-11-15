@@ -44,6 +44,4 @@ Scenario: search category to
 Scenario: cannot find same category if it is empty
   When I already logged in as user "2"
   And I go to the details page for "ipad"
-  And I follow "Show Category"
-  Then I should be on the items page
-  And I should see "'ipad' has no category info"
+  Then I should not see "Show Category"
