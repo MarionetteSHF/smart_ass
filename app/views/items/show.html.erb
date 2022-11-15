@@ -51,7 +51,9 @@
             <% else%>
               <%= link_to 'Add to Wishlist', add_wishlists_path, class: 'btn btn-primary m-1' %>
             <% end %>
-            <%= link_to "Show Category", search_category_path(:category=>@item.category), class: 'btn btn-primary m-1' %>
+            <% if !(@item.category.nil? or @item.category.empty?) %>
+              <%= link_to "Show Category", search_category_path(:category=>@item.category), class: 'btn btn-primary m-1' %>
+            <% end %>
           </div>
           <% if @item.user_id == @current_user %>
             <div class="row pl-2">

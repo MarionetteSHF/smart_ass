@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
   def check_user_accessibility
     if @current_user != @item.user_id
       flash[:notice] = "You are not authorized to edit this item"
-      redirect_to items_path
+      return redirect_to items_path
     end
   end
 
@@ -87,15 +87,16 @@ class ItemsController < ApplicationController
     redirect_to items_path
   end
 
-  # GET /items/category/:category
+  # GET /category/:category
   def search_by_category
     cat = params[:category]
-    if cat.empty? or cat.nil?
-      flash[:notice] = "'#{@item.title}' has no category info"
-      redirect_to items_path
-    else
-      @items = Item.search_by_category(cat)
+    @items = Item.search_by_category(cat)
+
+    if @items.length > 0
       render 'index'
+    else
+      flash[:notice] = "Nothing found under this category"
+      return redirect_to items_path
     end
   end
 

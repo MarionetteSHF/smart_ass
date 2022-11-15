@@ -18,118 +18,189 @@ RSpec.describe "/items", type: :request do
 #   # Item. As you add validations to Item, be sure to
 #   # adjust the attributes here as well.
   let(:valid_attributes) {
-    {:title=>"iPhone", :description=>"a new iphone", :price=>500, :number=>1, :neededItem=>false, :category=>'IT'}
+    {:title=>"iPhone", :description=>"a new iphone", :price=>500, :number=>1, :neededItem=>false, :category=>'IT', :user_id=>1}
   }
-#
-#   let(:invalid_attributes) {
-#     {:title=>"iPhone", :description=>"a new iphone", :price=>nil, :number=>1, :neededItem=>false, :category=>'IT'}
-#   }
-#
-#   describe "GET /index" do
-#     it "renders a successful response" do
-#       Item.create! valid_attributes
-#       get items_url
-#       expect(response).to be_successful
-#     end
-#   end
-#
-#   describe "GET /show" do
-#     it "renders a successful response" do
-#       item = Item.create! valid_attributes
-#       get item_url(item)
-#       expect(response).to be_successful
-#     end
-#   end
-#
-#   describe "GET /new" do
-#     it "renders a successful response" do
-#       get new_item_url
-#       expect(response).to be_successful
-#     end
-#   end
-#
-#   describe "GET /edit" do
-#     it "renders a successful response" do
-#       item = Item.create! valid_attributes
-#       get edit_item_url(item)
-#       expect(response).to be_successful
-#     end
-#   end
-#
-#   describe "POST /create" do
-#     context "with valid parameters" do
-#       it "creates a new Item" do
-#         expect {
-#           post items_url, params: { item: valid_attributes }
-#         }.to change(Item, :count).by(1)
-#       end
-#
-#       it "redirects to the created item" do
-#         post items_url, params: { item: valid_attributes }
-#         expect(response).to redirect_to(item_url(Item.last))
-#       end
-#     end
-#
-#     context "with invalid parameters" do
-#       it "does not create a new Item" do
-#         expect {
-#           post items_url, params: { item: invalid_attributes }
-#         }.to change(Item, :count).by(0)
-#       end
-#
-#
-#       it "renders a response with 422 status (i.e. to display the 'new' template)" do
-#         post items_url, params: { item: invalid_attributes }
-#         expect(response).to have_http_status(:unprocessable_entity)
-#       end
-#
-#     end
-#   end
-#
-#   describe "PATCH /update" do
-#     context "with valid parameters" do
-#       let(:new_attributes) {
-#         {:title=>"iPhone", :description=>"a new iphone", :price=>1000, :number=>1, :neededItem=>false, :category=>'IT'}
-#       }
-#
-#       it "updates the requested item" do
-#         item = Item.create! valid_attributes
-#         patch item_url(item), params: { item: new_attributes }
-#         item.reload
-#         expect(item.price).to eq(1000)
-#       end
-#
-#       it "redirects to the item" do
-#         item = Item.create! valid_attributes
-#         patch item_url(item), params: { item: new_attributes }
-#         item.reload
-#         expect(response).to redirect_to(item_url(item))
-#       end
-#     end
-#
-#     context "with invalid parameters" do
-#
-#       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
-#         item = Item.create! valid_attributes
-#         patch item_url(item), params: { item: invalid_attributes }
-#         expect(response).to have_http_status(:unprocessable_entity)
-#       end
-#
-#     end
-#   end
-#
-#   describe "DELETE /destroy" do
-#     it "destroys the requested item" do
-#       item = Item.create! valid_attributes
-#       expect {
-#         delete item_url(item)
-#       }.to change(Item, :count).by(-1)
-#     end
-#
-#     it "redirects to the items list" do
-#       item = Item.create! valid_attributes
-#       delete item_url(item)
-#       expect(response).to redirect_to(items_url)
-#     end
-#   end
+
+  let(:no_cat) {
+    {:title=>"iPad", :description=>"a new iphone", :price=>500, :number=>1, :neededItem=>false, :user_id=>1}
+  }
+
+  let(:invalid_attributes) {
+    {:title=>"iPhone", :description=>"a new iphone", :price=>nil, :number=>1, :neededItem=>false, :category=>'IT', :user_id=>1}
+  }
+
+  let(:mock_user1) {
+    {:phone=>"412377", :name=>"Wu", :email=>"wuw@sina.cn", :password=>"123445"}
+  }
+
+  let(:mock_user2) {
+    {:phone=>"412377", :name=>"Qi", :email=>"wuw2@sina.cn", :password=>"123445"}
+  }
+
+  describe "with user logged in" do 
+    before(:each) do 
+      @user = User.create! mock_user1
+      @current_user = @user.id
+      post '/login', params: {session: mock_user1}
+
+    end
+
+    describe "GET /index" do
+      it "renders a successful response" do
+        get items_path
+        expect(response).to be_successful
+      end
+    end
+
+    describe "GET /show" do
+      it "renders a successful response" do
+        item = Item.create! valid_attributes
+        get item_path(:id=>item.id)
+        expect(response).to render_template("show")
+      end
+    end
+
+    describe "GET /new" do
+      it "renders a successful response" do
+        get new_item_url
+        expect(response).to be_successful
+      end
+    end
+
+    describe "GET /edit" do
+      it "renders a successful response" do
+        item = Item.create! valid_attributes
+        get edit_item_url(item)
+        expect(response).to be_successful
+      end
+    end
+
+    describe "POST /create" do
+      context "with valid parameters" do
+        it "creates a new Item" do
+          expect {
+            post items_url, params: { item: valid_attributes }
+          }.to change(Item, :count).by(1)
+        end
+
+        it "redirects to the created item" do
+          post items_url, params: { item: valid_attributes }
+          expect(response).to redirect_to(item_url(Item.last))
+        end
+      end
+
+      context "with invalid parameters" do
+        it "does not create a new Item" do
+          expect {
+            post items_url, params: { item: invalid_attributes }
+          }.to change(Item, :count).by(0)
+        end
+
+
+        it "renders a response with 422 status (i.e. to display the 'new' template)" do
+          post items_url, params: { item: invalid_attributes }
+          expect(response).to have_http_status(:unprocessable_entity)
+        end
+
+      end
+    end
+
+    describe "PATCH /update" do
+      context "with valid parameters" do
+        let(:new_attributes) {
+          {:title=>"iPhone", :description=>"a new iphone", :price=>1000, :number=>1, :neededItem=>false, :category=>'IT'}
+        }
+
+        it "updates the requested item" do
+          item = Item.create! valid_attributes
+          patch item_url(item), params: { item: new_attributes }
+          item.reload
+          expect(item.price).to eq(1000)
+        end
+
+        it "redirects to the item" do
+          item = Item.create! valid_attributes
+          patch item_url(item), params: { item: new_attributes }
+          item.reload
+          expect(response).to redirect_to(item_url(item))
+        end
+      end
+
+      context "with invalid parameters" do
+
+        it "renders a response with 422 status (i.e. to display the 'edit' template)" do
+          item = Item.create! valid_attributes
+          patch item_url(item), params: { item: invalid_attributes }
+          expect(response).to have_http_status(:unprocessable_entity)
+        end
+
+      end
+    end
+
+    describe "DELETE /destroy" do
+      it "destroys the requested item" do
+        item = Item.create! valid_attributes
+        expect {
+          delete item_url(item)
+        }.to change(Item, :count).by(-1)
+      end
+
+      it "redirects to the items list" do
+        item = Item.create! valid_attributes
+        delete item_url(item)
+        expect(response).to redirect_to(items_url)
+      end
+    end
+  end
+
+  describe "with user not logged in" do 
+    describe "GET /show" do
+      it "renders the login page" do
+        post items_path
+        expect(response).to redirect_to(login_path)
+      end
+    end
+
+    describe "try to edit an item" do
+      it "render the items page" do
+        user1 = User.create! mock_user1
+        item = Item.create! valid_attributes
+        user2 = User.create! mock_user2
+        post '/login', params: {session: mock_user2}
+        get edit_item_path(item)
+        expect(response).to redirect_to(items_path)
+      end
+    end
+  end
+
+  describe "search category" do
+    before(:each) do
+      user = User.create! mock_user1
+      item1 = Item.create! valid_attributes
+      item2 = Item.create! no_cat
+      post '/login', params: {session: mock_user1}
+    end
+    describe "with an item has valid category" do
+      it "render the index page" do
+        get search_category_url(:category=>"IT")
+        expect(response).to render_template("index")
+      end
+    end
+
+    describe "with an item has empty category" do
+      it "redirect to root path" do
+        get search_category_url(:category=>"EMPTY")
+        expect(response).to redirect_to(items_path)
+      end
+    end
+  end
+
+  describe "search user items" do
+    it "register with user and login" do
+      @user = User.create! mock_user1
+      post '/login', params: {session: mock_user1}
+      get search_user_items_path(@user)
+      expect(response).to render_template("index")
+    end
+  end
 end

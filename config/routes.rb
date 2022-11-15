@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get '/items/user', to: 'items#get_items_by_user', as: 'user_items'
   get '/items/category/:category', to: 'items#search_by_category', as: 'search_category'
+  get '/users/items', to: 'items#get_items_by_user', as: 'search_user_items'
   resources :items
   resources :users
   resources :new
