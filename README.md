@@ -1,4 +1,4 @@
-# SmartAss Iteration 1
+# SmartAss Iteration 2
 
 ### Team Members
 
@@ -12,9 +12,9 @@ Lynn Zhu - jz2969
 
 ### Project Information
 
-* **Ruby Version:** 3.1.2
+- **Ruby Version:** 3.1.2
 
-* **Heroku:** https://smart-ass-2022.herokuapp.com/
+- **Heroku:** https://smart-ass-2022.herokuapp.com/
 
 ### Instructions and Setup
 
@@ -22,9 +22,9 @@ Lynn Zhu - jz2969
 
 `git clone https://github.com/MarionetteSHF/smart_ass.git`
 
-2. Switch to iteration-1 branch for grading
+2. Switch to iteration-2 branch for grading
 
-`git chechout iteration-1`
+`git chechout iteration-2`
 
 3. Run `bundle install --without production` to make sure all gems are properly installed
 
@@ -42,11 +42,15 @@ bundle exec rake db:seed
 rake spec
 rake cucumber
 ```
+
 6. Start application
+
 ```shell
 bundle exec rails s
 ```
+
 7. Routes
+
 ```shell
 /items
 /items/new
@@ -56,3 +60,6 @@ bundle exec rails s
 /login
 /users
 ```
+
+8. Add image
+   In the `/items/new`, user can attach one or more images to their item request. The home page will show the first image they uploaded.
