@@ -1,7 +1,7 @@
 Feature: create and destroy items
 
-  As a web user
-  So that I can create and delete items
+  As a web user, I can create and delete items,
+  add items to the wishlist, and remove items from wishlist
 
 Background: items in database
 

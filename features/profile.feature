@@ -23,15 +23,19 @@ Scenario: Go back to item page
     Then I should be on the items page
 
 Scenario: Error on empty fields when I update the profile
-    When I go to the profile page for "hanfushi"
+    When I already logged in as user "1"
+    And I go to the profile page for "hanfushi"
     Then I follow "Edit"
     Then I fill in "Name" with ""
-    And I should see "Please fill in all fields below."
+    And I press "Save Changes"
+    Then I should see "Please fill in all fields below."
 
 Scenario: Update information on profile successfully
-    When I go to the profile page for "abc"
+    When I already logged in as user "2"
+    And I go to the profile page for "abc"
     And I follow "Edit"
-    And I fill in "Name" with "new_name"
+    And I fill in "Name" with "new_test_name"
     And I fill in "Phone" with "87654321"
-    Then I should see "new_name was successfully updated."
-    And I should be on the profile page for "abc"
+    And I press "Save Changes"
+    Then I should see "new_test_name was successfully updated."
+    And I should be on the profile page for "new_test_name"
