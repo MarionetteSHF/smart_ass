@@ -54,8 +54,6 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.user_id = @current_user
 
-    puts item_params[:images]
-
     if @item.save
       flash[:notice] = "#{@item.title} was successfully created"
       redirect_to item_path(@item)
