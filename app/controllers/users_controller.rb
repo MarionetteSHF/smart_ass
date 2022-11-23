@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     def create
         # || user_params[:password].empty? || user_params[:phone].empty? || user_params[:email].empty?
         if user_params[:name].empty? || user_params[:password].empty? || user_params[:phone].empty? || user_params[:email].empty?
-            flash.now[:register_error] = "please fill in all information"
+            flash[:notice] = "please fill in all information"
             
             render "index"
             return

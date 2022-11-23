@@ -1,22 +1,29 @@
-<h2>log in</h2>
+<!DOCTYPE html>
+<html>
+<body>
+<main class="container">
 
-<% if flash[:login_error] %>
+<div class="pt-5 text-center">
+  <h2>Login</h2>
+</div>
 
-  <p><%= flash[:login_error] %></p>
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <%= form_for :session, :class => 'form', url: :sessions_create do %>
 
-<% end %>
+      <%= label :session, :email, 'Email Address', :class => 'col-form-label' %>
+      <%= text_field :session, :email, :class => 'form-control' %>
+    
+      <%= label :session, :password, 'Password', :class => 'col-form-label' %>
+      <%= text_field :session, :password, :class => 'form-control' %>
+      <br>
+      
+      <%= submit_tag 'Login', :class => 'btn btn-primary' %>
+      
+    <% end %>
+  </div>
+</div>
 
-
-<%= form_for :session, :class => 'form', url: :sessions_create do %>
-
-  <%= label :session, :email, 'Email address', :class => 'col-form-label' %>
-  <%= text_field :session, :email, :class => 'form-control' %>
-
-
-
-  <%= label :session, :password, 'Password', :class => 'col-form-label' %>
-  <%= text_field :session, :password, :class => 'form-control' %>
-<%= submit_tag 'Login', :class => 'btn btn-primary' %>
- 
-
-<% end %>
+</main>
+</body>
+</html>
