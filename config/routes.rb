@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get '/wishlists/:id/add', to: 'wishlists#create', as: 'add_wishlists'
   delete '/wishlists/:id/delete', to: 'wishlists#destroy', as: 'delete_wish'
 
+  get '/Items/myitem', to: 'wishlists#myitem', as: 'myitem'
+  
+
   get '/register', to: 'users#index', as: 'register'
   post 'sessions/create'
   get '/login', to: 'sessions#new', as: 'login_path'

@@ -18,6 +18,18 @@ class WishlistsController < ApplicationController
         end
         @items = Item.where(id: item_id_arr)
     end
+
+    def myitem
+        @user = User.find_by(id: session[:user_id])
+        # @user = User.find_by(id: session[:user_id])
+        # @wishlist = Item.where(user_id: session[:user_id])
+        # item_id_arr = []
+        # @wishlist.each do |w|
+        #     item_id_arr.push(w.item_id)
+        # end
+        # @items = Item.where(id: item_id_arr)
+        @items = Item.where(user_id: session[:user_id])
+    end
     
     # GET /waitlists/new
     # def new

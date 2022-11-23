@@ -1,0 +1,37 @@
+
+
+<!doctype html>
+<html>
+  <body>
+    <main>
+      <div class="album py-5">
+        <div class="container">
+        <% if @user %>
+          <h2><%= @user.name%>'s item page</h2>
+        <% end %>
+          <div class="row">
+          <% @items.each do |item| %>
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <a class="card-block stretched-link text-decoration-none" href=<%= item_path(item)%>>
+                  <%# <img class="card-img-top" data-src="./iphone.jpeg" alt="Card image cap"> %>
+                  <% if item.images.attached? %>
+                    <%= image_tag item.images[0], :class=>'card-img-top' %>
+                  <% end %>
+                  <div class="card-header text-dark"><strong><%= item.title %></strong></div>
+                  <div class="card-body">
+                    <p class="card-text lead text-dark"><small>$<%= item.price %></small></p>
+                    <p class="card-text text-secondary"><%= item.description %></p>
+                    <p class="card-text"><small class="text-muted"><%= item.updated_at %></small></p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          <% end %>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
