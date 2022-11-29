@@ -37,6 +37,15 @@ class ItemsController < ApplicationController
   # GET /items/1 or /items/1.json
   def show
     @item = Item.find params[:id]
+    comments = Comment.search_comments_by_item_id(params[:id])
+    @comments = []
+    comments.each do |c|
+      username = User.find(c.user_id).name
+      time = c.created_at
+      description = c.description
+      comment_id = c.id
+      @comments.append({id: comment_id, username: username, time: time, description: description})
+    end
   end
 
   # GET /items/new

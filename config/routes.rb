@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get '/items/user', to: 'items#get_items_by_user', as: 'user_items'
+  post "/items/:id/comment", to: "comments#create", as: 'create_comment'
   get '/items/category/:category', to: 'items#search_by_category', as: 'search_category'
   get '/users/items', to: 'items#get_items_by_user', as: 'search_user_items'
   resources :items
@@ -21,5 +22,7 @@ Rails.application.routes.draw do
   get "/logout" => "users#logout", :as => "logout"
   get "/users/:id", to: "users#show", as: "profile"
   get "/users/edit", to: "users#edit", as: "edit_profile"
+
+  
   root :to => redirect('/items')
 end
