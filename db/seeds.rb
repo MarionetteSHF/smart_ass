@@ -7,11 +7,11 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
  items = [
-   {:title => 'iphone', :description => 'a new one', :price => '900', :neededItem=> false, :number=> 1, :category=>"IT", :user_id=>"1"},
-   {:title => 'ipad', :description => 'a used one', :price => '500', :neededItem=> false, :number=> 1, :category=>"IT", :user_id=>"1"},
-   {:title => 'bed', :description => 'a queen size bed', :price => '200', :neededItem=> false, :number=> 1, :category=>"furniture", :user_id=>"1"},
-   {:title => 'desk', :description => 'a L shape one', :price => '100', :neededItem=> false, :number=> 1, :category=>"furniture", :user_id=>"1"},
-   {:title => 'mouse', :description => 'a used mouse', :price => '20', :neededItem=> true, :number=> 1, :category=>"IT", :user_id=>"2"},
+   {:title => 'iphone', :description => 'a new one', :price => '900', :number=> 1, :category=>"IT", :user_id=>"1"},
+   {:title => 'ipad', :description => 'a used one', :price => '500',  :number=> 1, :category=>"IT", :user_id=>"1"},
+   {:title => 'bed', :description => 'a queen size bed', :price => '200',  :number=> 1, :category=>"furniture", :user_id=>"1"},
+   {:title => 'desk', :description => 'a L shape one', :price => '100',  :number=> 1, :category=>"furniture", :user_id=>"1"},
+   {:title => 'mouse', :description => 'a used mouse', :price => '20',  :number=> 1, :category=>"IT", :user_id=>"2"},
 ]
  users = [
     {:phone => '1234567777', :email => 'wangdazhuang@gmail.com', :password => 'testuser', :name => 'testuser'},

@@ -18,15 +18,15 @@ RSpec.describe "/items", type: :request do
 #   # Item. As you add validations to Item, be sure to
 #   # adjust the attributes here as well.
   let(:valid_attributes) {
-    {:title=>"iPhone", :description=>"a new iphone", :price=>500, :number=>1, :neededItem=>false, :category=>'IT', :user_id=>1}
+    {:title=>"iPhone", :description=>"a new iphone", :price=>500, :number=>1, :category=>'IT', :user_id=>1}
   }
 
   let(:no_cat) {
-    {:title=>"iPad", :description=>"a new iphone", :price=>500, :number=>1, :neededItem=>false, :user_id=>1}
+    {:title=>"iPad", :description=>"a new iphone", :price=>500, :number=>1, :user_id=>1}
   }
 
   let(:invalid_attributes) {
-    {:title=>"iPhone", :description=>"a new iphone", :price=>nil, :number=>1, :neededItem=>false, :category=>'IT', :user_id=>1}
+    {:title=>"iPhone", :description=>"a new iphone", :price=>nil, :number=>1, :category=>'IT', :user_id=>1}
   }
 
   let(:mock_user1) {
@@ -108,7 +108,7 @@ RSpec.describe "/items", type: :request do
     describe "PATCH /update" do
       context "with valid parameters" do
         let(:new_attributes) {
-          {:title=>"iPhone", :description=>"a new iphone", :price=>1000, :number=>1, :neededItem=>false, :category=>'IT'}
+          {:title=>"iPhone", :description=>"a new iphone", :price=>1000, :number=>1, :category=>'IT'}
         }
 
         it "updates the requested item" do

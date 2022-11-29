@@ -12,12 +12,12 @@ Background: items in database
   | 4123893788 | Qi   | qi1998@sina.com  | 123456   |
 
   Given the following items exist:
-  | title        | category  | number  | neededItem | price | user_id |
-  | imac         |           | 1       | false      | 500   | 1       |
-  | ipad         |           | 1       | false      | 1000  | 2       |
-  | bed frame    | furniture | 1       | true       | 100   | 1       |
-  | BMW          | vehicle   | 1       | false      | 40000 | 1       |
-  | Audi         | vehicle   | 1       | false      | 45000 | 1       |
+  | title        | category  | number  | price | user_id |
+  | imac         |           | 1       | 500   | 1       |
+  | ipad         |           | 1       | 1000  | 2       |
+  | bed frame    | furniture | 1       | 100   | 1       |
+  | BMW          | vehicle   | 1       | 40000 | 1       |
+  | Audi         | vehicle   | 1       | 45000 | 1       |
 
 Scenario: add category but not logging in
   When I already logged in as user "1"

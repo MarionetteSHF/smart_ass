@@ -17,16 +17,13 @@
             <%= f.text_field  :description, class: 'form-control mb-3' %>
 
             <%= f.label  :category, 'Category', class: 'col-form-label' %>
-            <%= f.text_field  :category, class: 'form-control mb-3' %>
+            <%= f.select  :category, @category_list, {}, {class: 'form-control mb-3'} %>
 
             <%= f.label  :price, 'Price', class: 'col-form-label' %>
             <%= f.text_field  :price, class: 'form-control mb-3' %>
 
             <%= f.label  :number, 'Number', class: 'col-form-label' %>
             <%= f.text_field  :number, class: 'form-control mb-3' %> 
-
-            <%= f.label  :neededItem, 'Buy or Sell', class: 'col-form-label' %>
-            <%= f.select  :neededItem, [['Buy', true], ['Sell', false]], {}, {class: 'form-control mb-5'} %>
 
             <%= f.label  :images, "Image", class: 'col-form-label' %>
             <%= f.file_field  :images, multiple: true, direct_upload: true %>

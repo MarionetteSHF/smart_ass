@@ -42,6 +42,7 @@ class ItemsController < ApplicationController
   # GET /items/new
   def new
     @item = Item.new
+    @category_list = Item.get_all_category()
   end
 
   # GET /items/1/edit
@@ -111,6 +112,6 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:title, :description, :category, :price, :number, :neededItem, images: [])
+      params.require(:item).permit(:title, :description, :category, :price, :number, images: [])
     end
 end
