@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get "/logout" => "users#logout", :as => "logout"
   get "/users/:id", to: "users#show", as: "profile"
   get "/users/edit", to: "users#edit", as: "edit_profile"
+  get '/auth/:provider/callback' => 'sessions#omniauth'
 
   
   root :to => redirect('/items')

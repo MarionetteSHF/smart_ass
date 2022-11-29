@@ -27,6 +27,26 @@ class SessionsController < ApplicationController
    end
  
   end
+
+  def omniauth
+    info = request.env['omniauth.auth']
+    puts info['info']
+    useremail = info['info']['email']
+    name = info['info']['first_name']
+    if User.find_by(email: useremail)
+      session[:user_id] = User.find_by(email: useremail).id
+    else
+      user = User.new
+      user.email = useremail
+      user.name = name
+      if user.create
+        session[:user_id] = user.id
+      else
+        flash[:notice] = "Cannot login with Oauth, user creation failed..."
+      end
+    end
+    redirect_to items_path
+  end
  
   
  
