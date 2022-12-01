@@ -46,10 +46,12 @@
             <small>Updated at <%= @item.updated_at %></small>
           </p>
           <div class="row pl-2">
-            <% if session[:user_id] && Wishlist.find_by(user_id: session[:user_id], item_id: @item.id) %>
-              <%= button_to "Remove from Wishlist", delete_wish_path, method: :delete,  class: 'btn btn-primary m-1' %>
-            <% else%>
-              <%= link_to 'Add to Wishlist', add_wishlists_path, class: 'btn btn-primary m-1' %>
+            <% if @item.user_id != @current_user %>
+              <% if session[:user_id] && Wishlist.find_by(user_id: session[:user_id], item_id: @item.id) %>
+                <%= button_to "Remove from Wishlist", delete_wish_path, method: :delete,  class: 'btn btn-primary m-1' %>
+              <% else%>
+                <%= link_to 'Add to Wishlist', add_wishlists_path, class: 'btn btn-primary m-1' %>
+              <% end %>
             <% end %>
             <% if !(@item.category.nil? or @item.category.empty?) %>
               <%= link_to "Show Category", search_category_path(:category=>@item.category), class: 'btn btn-primary m-1' %>

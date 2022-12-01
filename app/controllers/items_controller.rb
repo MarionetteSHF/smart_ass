@@ -108,6 +108,19 @@ class ItemsController < ApplicationController
     end
   end
 
+  #GET /search/:search_term
+  def search
+    term = params[:search_term]
+    @items = Item.search(term)
+
+    if @items.length > 0
+      render 'index'
+    else
+      flash[:notice] = "Nothing found under this keyword"
+      return redirect_to items_path
+    end
+  end
+
   def get_items_by_user
     @items = Item.search_by_user @current_user
     render 'index'

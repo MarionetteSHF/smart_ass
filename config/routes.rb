@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post "/items/:id/comment", to: "comments#create", as: 'create_comment'
   get '/items/category/:category', to: 'items#search_by_category', as: 'search_category'
   get '/users/items', to: 'items#get_items_by_user', as: 'search_user_items'
+  get '/items/search/:search_term', to: 'items#search', as: 'search_items'
   resources :items
   resources :users
   resources :new
