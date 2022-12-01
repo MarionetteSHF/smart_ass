@@ -6,11 +6,13 @@
     <h2 class="display-4"><%= @user.name %></h2>
     
     <h3 class='display-6'>Contact</h3>
-    <p class='lead'><b>Phone:</b> <%= @user.phone %></p>
-    <p class='lead'><b>Email Address:</b> <%= @user.email %></p>
+    <ul>
+        <li class='lead'><b>Phone:</b> <%= @user.phone %></li>
+        <li class='lead'><b>Email Address:</b> <%= @user.email %></li>
+    </ul>
 
     <h3 class='display-6'>About Me</h3>
-    <p class='lead'>This is my bio.</p>
+    <p class='lead'><%= @user.description %></p>
     <div class='row'>
     <%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-primary m-1' %>
     </div>

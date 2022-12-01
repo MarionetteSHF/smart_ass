@@ -28,7 +28,7 @@ Scenario: Error on empty fields when I update the profile
     Then I follow "Edit"
     Then I fill in "Name" with ""
     And I press "Save Changes"
-    Then I should see "Please fill in all fields below."
+    Then I should see "Please fill in your name and contact below."
 
 Scenario: Update information on profile successfully
     When I already logged in as user "2"
@@ -37,5 +37,5 @@ Scenario: Update information on profile successfully
     And I fill in "Name" with "new_test_name"
     And I fill in "Phone" with "87654321"
     And I press "Save Changes"
-    Then I should see "new_test_name was successfully updated."
+    Then I should see "Your information was successfully updated."
     And I should be on the profile page for "new_test_name"
