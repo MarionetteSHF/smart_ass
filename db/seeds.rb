@@ -14,10 +14,11 @@
    {:title => 'mouse', :description => 'a used mouse', :price => '20',  :number=> 1, :category=>"IT", :user_id=>"2"},
 ]
  users = [
-    {:phone => '1234567777', :email => 'wangdazhuang@gmail.com', :password => 'testuser', :name => 'testuser'},
-    {:phone => '6462345569', :email => 'wangdazhuang@gmail.com', :password => '25-Nov-1992', :name => 'hanfushi'},
-    { :phone => '6462345512', :email => 'wangdazhu@gmail.com', :password => '25-Nov-1992', :name => 'wuwei'},
-    { :phone => '6362345569', :email => 'wangda@gmail.com', :password => '25-Nov-1992', :name => 'ziniu liu'},
+    {:phone => '1234567777', :email => 'wangdazhuang@gmail.com', :password => 'testuser', :name => 'testuser', :description => 'test bio'},
+    {:phone => '6462345569', :email => 'abc@gmail.com', :password => 'abcabc', :name => 'abc', :description => ''},
+    {:phone => '6462345569', :email => 'wang@gmail.com', :password => 'wang', :name => 'hanfushi', :description => 'Columbia Biostats'},
+    { :phone => '6462345512', :email => 'wuwei@gmail.com', :password => 'wuwei', :name => 'wuwei', :description => 'Columbia CS'},
+    { :phone => '6362345569', :email => 'ziniu@gmail.com', :password => 'ziniu', :name => 'ziniu liu', :description => 'Columbia CS'},
  ]
 
  wishlists = [{:user_id => 1, :item_id => 1},

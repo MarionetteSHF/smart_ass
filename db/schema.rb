@@ -65,6 +65,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_165040) do
     t.string "name"
     t.string "email"
     t.string "password"
+    t.string "description"
   end
 
   create_table "wishlists", force: :cascade do |t|

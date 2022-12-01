@@ -5,7 +5,8 @@ class CreateUsers < ActiveRecord::Migration[7.0]
         t.string   :phone
         t.string   :name
         t.string   :email
-        t.string :password
+        t.string   :password
+        t.string   :description
         # Add fields that let Rails automatically keep track
         # of when movies are added or modified:
         # t.timestamps
