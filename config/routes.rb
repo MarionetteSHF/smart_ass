@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get '/wishlists/:id/add', to: 'wishlists#create', as: 'add_wishlists'
   delete '/wishlists/:id/delete', to: 'wishlists#destroy', as: 'delete_wish'
 
-  get '/items/myitem', to: 'wishlists#myitem', as: 'myitem'
+  get '/myitems', to: 'wishlists#myitems', as: 'myitems'
   
 
   get '/register', to: 'users#index', as: 'register'
