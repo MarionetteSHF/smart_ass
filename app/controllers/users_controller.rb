@@ -44,7 +44,23 @@ class UsersController < ApplicationController
 
     def update
         @user = User.find_by_id params[:id]
+        if user_params[:password].present?
+            if user_params[:password] != user_params[:password_confirmation]
+                flash[:notice] = "Two passwords are different"
+                redirect_to reset_password_path(@user)
+                return
+            end
+            # user_params.delete(:password_confirmation)
+            password_params = Hash[:password => user_params[:password_confirmation]]
+            if @user.update(password_params)
+                flash[:notice] = "Your password was successfully updated."
+                redirect_to profile_path(@user)
+                return
+            end
+        end
+
         if user_params[:name].empty? || user_params[:email].empty? || user_params[:phone].empty?
+            
             flash[:notice] = "Please fill in your name and contact below."
             redirect_to edit_user_path(@user)
             return
@@ -60,7 +76,7 @@ class UsersController < ApplicationController
     # Making "internal" methods private is not required, but is a common practice.
     # This helps make clear which methods respond to requests, and which ones do not.
     def user_params
-      params.require(:user).permit(:name, :email, :phone, :password, :description)
+      params.require(:user).permit(:name, :email, :phone, :password, :description, :password_confirmation)
     end
 
 end
