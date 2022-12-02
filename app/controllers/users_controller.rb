@@ -59,19 +59,26 @@ class UsersController < ApplicationController
 
     def update
         @user = User.find_by_id params[:id]
-        if user_params[:password].present?
+        if !user_params[:password].nil?
+            
+            if user_params[:password].empty? || user_params[:password_confirmation].empty?
+                flash[:notice] = "Password cannot be empty."
+                redirect_to reset_password_path(@user)
+                return
+            end
+            
             if user_params[:password] == @user.password
-                flash[:notice] = "New Password and Old Password should be different"
+                flash[:notice] = "The new password you entered is the same as your old password. Enter a different password."
                 redirect_to reset_password_path(@user)
                 return
             end
 
             if user_params[:password] != user_params[:password_confirmation]
-                flash[:notice] = "Two passwords are different"
+                flash[:notice] = "Password didn't match."
                 redirect_to reset_password_path(@user)
                 return
             end
-            # user_params.delete(:password_confirmation)
+
             password_params = Hash[:password => user_params[:password_confirmation]]
             if @user.update(password_params)
                 flash[:notice] = "Your password was successfully updated."
