@@ -18,7 +18,7 @@ class Item < ActiveRecord::Base
       if term.nil?
         return []
       end
-      return Item.where("lower(title) LIKE :search OR lower(category) LIKE :search OR lower(description) LIKE :search", search: "%#{term.downcase}%").uniq
+      return Item.where("lower(title) LIKE :search OR lower(category) LIKE :search OR lower(description) LIKE :search", search: "%#{term}%").uniq
     end
 
     def Item.search_by_user(user_id)
