@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get "/logout" => "users#logout", :as => "logout"
   get "/users/:id", to: "users#show", as: "profile"
   get "/users/edit", to: "users#edit", as: "edit_profile"
+  get "/reset", to: "users#reset", as: "reset_password"
   get '/auth/:provider/callback' => 'sessions#omniauth'
 
   

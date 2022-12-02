@@ -10,17 +10,7 @@
     <div class="col-md-8 offset-md-2">
       <hr class="mb-4">
       <%= form_tag user_path(@user), :method=>:put, class: 'form-horizontal' do %>
-        <%= label :user, :name, 'Name', class: 'col-form-label' %>
-        <%= text_field :user, :name, class: 'form-control mb-3' %>
-
-        <%= label :user, :phone, 'Phone', class: 'col-form-label' %>
-        <%= text_field :user, :phone, class: 'form-control mb-3' %>
-
-        <%= label :user, :email, 'Email Address', class: 'col-form-label' %>
-        <%= text_field :user, :email, class: 'form-control mb-3' %>
-
-        <%= label :user, :description, 'About me', class: 'col-form-label' %>
-        <%= text_field :user, :description, class: 'form-control mb-6' %>
+        
 
         <%= label :user, :password, 'Password', :class => 'col-form-label' %>
         <%= password_field :user, :password, :class => 'form-control' %>
@@ -28,7 +18,7 @@
         <div class='row mb-3'>
           <div class='col text-center'>
             <%= submit_tag 'Save Changes', class: 'btn btn-primary mr-3 ml-5' %>
-            <%= link_to 'Cancel', profile_path, class: 'btn btn-secondary' %>
+            
           </div>
         </div>
       <% end %>

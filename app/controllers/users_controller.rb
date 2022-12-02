@@ -38,6 +38,10 @@ class UsersController < ApplicationController
         @user = User.find_by_id session[:user_id]
     end
 
+    def reset
+        @user = User.find_by_id session[:user_id]
+    end
+
     def update
         @user = User.find_by_id params[:id]
         if user_params[:name].empty? || user_params[:email].empty? || user_params[:phone].empty?
