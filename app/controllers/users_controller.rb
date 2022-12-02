@@ -14,6 +14,21 @@ class UsersController < ApplicationController
 
     def create
         # || user_params[:password].empty? || user_params[:phone].empty? || user_params[:email].empty?
+        @user = User.find_by(email: user_params[:email])
+        if @user.present?
+            flash[:notice] = "The email has been used"
+            render "index"
+            return
+        end
+
+        @user = User.find_by(phone: user_params[:phone])
+        if @user.present?
+            flash[:notice] = "The phone has been used"
+            render "index"
+            return
+        end
+
+
         if user_params[:name].empty? || user_params[:password].empty? || user_params[:phone].empty? || user_params[:email].empty?
             flash[:notice] = "please fill in all information"
             
@@ -45,6 +60,12 @@ class UsersController < ApplicationController
     def update
         @user = User.find_by_id params[:id]
         if user_params[:password].present?
+            if user_params[:password] == @user.password
+                flash[:notice] = "New Password and Old Password should be different"
+                redirect_to reset_password_path(@user)
+                return
+            end
+
             if user_params[:password] != user_params[:password_confirmation]
                 flash[:notice] = "Two passwords are different"
                 redirect_to reset_password_path(@user)
