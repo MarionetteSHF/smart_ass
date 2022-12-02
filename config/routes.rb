@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post "/items/:id/comment", to: "comments#create", as: 'create_comment'
   get '/items/category/:category', to: 'items#search_by_category', as: 'search_category'
   get '/users/items', to: 'items#get_items_by_user', as: 'search_user_items'
-  get '/items/search/:search_term', to: 'items#search', as: 'search_items'
+  get '/search', to: 'items#search', as: 'search'
   resources :items
   resources :users
   resources :new
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get '/wishlists/:id/add', to: 'wishlists#create', as: 'add_wishlists'
   delete '/wishlists/:id/delete', to: 'wishlists#destroy', as: 'delete_wish'
 
-  get '/Items/myitem', to: 'wishlists#myitem', as: 'myitem'
+  get '/myitems', to: 'wishlists#myitems', as: 'myitems'
   
 
   get '/register', to: 'users#index', as: 'register'

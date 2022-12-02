@@ -110,10 +110,10 @@ class ItemsController < ApplicationController
 
   #GET /search/:search_term
   def search
-    term = params[:search_term]
+    term = params[:search_term].first.downcase
     @items = Item.search(term)
-
     if @items.length > 0
+      params[:search_term] = ''
       render 'index'
     else
       flash[:notice] = "Nothing found under this keyword"
@@ -134,6 +134,6 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:title, :description, :category, :price, :number, images: [])
+      params.require(:item).permit(:title, :description, :category, :price, :number, :search_term, images: [])
     end
 end

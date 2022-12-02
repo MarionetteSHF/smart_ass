@@ -4,7 +4,7 @@
 <main class="container">
 
     <h2 class="display-4"><%= @user.name %></h2>
-    
+
     <h3 class='display-6'>Contact</h3>
     <ul>
         <li class='lead'><b>Phone:</b> <%= @user.phone %></li>
@@ -17,7 +17,7 @@
     <%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-primary m-1' %>
     <%= link_to 'Reset Password', reset_password_path(@user), class: 'btn btn-primary m-1' %>
     </div>
-  
+
 </main>
 </body>
 </html>
