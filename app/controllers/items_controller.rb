@@ -96,7 +96,7 @@ class ItemsController < ApplicationController
     redirect_to items_path
   end
 
-  # GET /category/:category
+  # GET /items/category/:category
   def search_by_category
     cat = params[:category]
     @items = Item.search_by_category(cat)

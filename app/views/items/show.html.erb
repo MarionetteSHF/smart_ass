@@ -74,12 +74,10 @@
       <div class="row d-flex mb-5">
         <div class="col-md-10 offset-md-1">
           <h2 class="mb-3">Comment</h2>
-          <div class="form-outline mb-4">
-            <%= form_with(url: create_comment_path(@item.id), method: :post) do |f| %>
-              <%= f.text_field :description, :class=> "form-control", :placeholder=>"Leave your comment..." %>
-              <%= f.submit 'Post', :class => 'btn btn-primary inline-block' %>
+            <%= form_with(url: create_comment_path(@item.id), method: :post, :class=>"form-inline") do |f| %>
+              <%= f.text_field :description, :class=> "form-control flex-fill", :placeholder=>"Leave your comment..." %>
+              <%= f.submit 'Post', :class => 'btn btn-outline-secondary' %>
             <% end %>
-          </div>
           <div class="input-group mb-4">
             <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
             <div class="input-group-append">
