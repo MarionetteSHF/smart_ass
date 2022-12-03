@@ -33,9 +33,21 @@
                 Category
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">IT</a>
-                <a class="dropdown-item" href="#">Furniture</a>
-                <a class="dropdown-item" href="#">Vehicle</a>
+                <%# <a class="dropdown-item" href="/items/IT">IT</a>
+                <a class="dropdown-item" href="#">Furniture</a> %>
+                <%= link_to "Shoes", search_category_path("Shoes"), class: 'dropdown-item' %>
+                <%= link_to "Clothing", search_category_path("Clothing"), class: 'dropdown-item' %>
+                <%= link_to "Jewelry & Watches", search_category_path("Jewelry & Watches"), class: 'dropdown-item' %>
+                <%= link_to "Electronics", search_category_path("Electronics"), class: 'dropdown-item' %>
+                <%= link_to "Home & Tools", search_category_path("Home & Tools"), class: 'dropdown-item' %>
+                <%= link_to "Beauty & Health", search_category_path("Beauty & Health"), class: 'dropdown-item' %>
+                <%= link_to "Sports", search_category_path("Sports"), class: 'dropdown-item' %>
+                <%= link_to "Books", search_category_path("Books"), class: 'dropdown-item' %>
+                <%= link_to "Pets", search_category_path("Pets"), class: 'dropdown-item' %>
+                <%= link_to "Pets", search_category_path("Pets"), class: 'dropdown-item' %>
+                <%= link_to "Grocery", search_category_path("Grocery"), class: 'dropdown-item' %>
+                <%= link_to "Others", search_category_path("Others"), class: 'dropdown-item' %>
+                
               </div>
             </li>
             <li class="nav-item active">
