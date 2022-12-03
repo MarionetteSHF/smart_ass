@@ -74,16 +74,10 @@
       <div class="row d-flex mb-5">
         <div class="col-md-10 offset-md-1">
           <h2 class="mb-3">Comment</h2>
-            <%= form_with(url: create_comment_path(@item.id), method: :post, :class=>"form-inline") do |f| %>
-              <%= f.text_field :description, :class=> "form-control flex-fill", :placeholder=>"Leave your comment..." %>
-              <%= f.submit 'Post', :class => 'btn btn-outline-secondary' %>
-            <% end %>
-          <div class="input-group mb-4">
-            <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button">Button</button>
-            </div>
-          </div>
+          <%= form_with(url: create_comment_path(@item.id), method: :post, :class=>"form-inline pb-5") do |f| %>
+            <%= f.text_field :description, :class=> "form-control flex-fill", :placeholder=>"Leave your comment..." %>
+            <%= f.submit 'Post', :class => 'btn btn-outline-primary ml-2' %>
+          <% end %>
 
           <% if @comments.length == 0 %>
               <p class="text-center"> - Leave the first comment! - </p>
@@ -95,9 +89,9 @@
 
                 <div class="d-flex justify-content-between">
                   <div class="d-flex flex-row align-items-center">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp" alt="avatar" width="25"
-                      height="25" />
-                    <p class="small mb-0 ms-2"><%= comment[:username] %></p>
+                    <img src="https://cdn-icons-png.flaticon.com/512/2102/2102647.png" alt="avatar" width="21"
+                      height="21" />
+                    <p class="small mb-0 ms-2 ml-2"><%= comment[:username] %></p>
                   </div>
                   <div class="d-flex flex-row align-items-center">
                     <p class="small text-muted mb-0"><%= comment[:time] %></p>
