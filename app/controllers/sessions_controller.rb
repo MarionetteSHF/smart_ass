@@ -39,7 +39,7 @@ class SessionsController < ApplicationController
       user = User.new
       user.email = useremail
       user.name = name
-      if user.create
+      if user.save
         session[:user_id] = user.id
       else
         flash[:notice] = "Cannot login with Oauth, user creation failed..."
