@@ -63,12 +63,13 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.user_id = @current_user
-
+    
     if @item.save
       flash[:notice] = "#{@item.title} was successfully created"
       redirect_to item_path(@item)
     else
       flash[:notice] = @item.errors.full_messages[0]
+      @category_list = Item.get_all_category()
       render 'new', :status=>422
     end
   end

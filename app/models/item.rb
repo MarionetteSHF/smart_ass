@@ -26,9 +26,8 @@ class Item < ActiveRecord::Base
     end
 
     def Item.get_all_category()
-        return ['Clothing', 'Shoes', 'Jewelry', 'Watches', 
+        return ['Clothing', 'Shoes', 'Jewelry & Watches', 
             'Electronics', 'Home & Tools', 'Beauty & Health', 
-            'Toys & Kids', 'Sports', 'Outdoors', 'Automotive',
-            'Books']
+            'Sports', 'Books', 'Pets', 'Grocery', 'Others']
     end
 end
