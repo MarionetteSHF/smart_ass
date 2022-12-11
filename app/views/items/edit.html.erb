@@ -9,15 +9,15 @@
       <div class="row">
         <div class="col-md-8 offset-md-2">
           <hr class="mb-4">
-          <%= form_for (@item), :method=>:put, class: 'form-horizontal' do |f| %>
+          <%= form_for (@item), class: 'form-horizontal' do |f| %>
             <%= f.label :title, 'Title', class: 'col-form-label' %>
             <%= f.text_field :title, class: 'form-control mb-3' %>
 
             <%= f.label :description, 'Description', class: 'col-form-label' %>
             <%= f.text_field :description, class: 'form-control mb-3' %>
 
-            <%= f.label :category, 'Category', class: 'col-form-label' %>
-            <%= f.text_field :category, class: 'form-control mb-3' %>
+            <%= f.label  :category, 'Category', class: 'col-form-label' %>
+            <%= f.select  :category, @category_list, {}, {class: 'form-control mb-3'} %>
 
             <%= f.label :price, 'Price', class: 'col-form-label' %>
             <%= f.text_field :price, class: 'form-control mb-3' %>

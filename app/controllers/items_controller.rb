@@ -57,6 +57,7 @@ class ItemsController < ApplicationController
   # GET /items/1/edit
   def edit
     @item = Item.find_by_id params[:id]
+    @category_list = Item.get_all_category()
   end
 
   # POST /items or /items.json
