@@ -3,7 +3,7 @@ RSpec.describe WishlistsController, type: :controller do
     {:name => 'abc',  :email => 'abd@gmail.com', :phone => '12345678', :password => 'abcabc'}
   }
   let(:new_item) {
-    {:title => 'mouse', :description => 'a used mouse', :price => '20', :neededItem=> true, :number=> 1, :category=>"IT", :user_id=>"2", :user_id => 1, :images => [] }
+    {:title => 'mouse', :description => 'a used mouse', :price => '20', :number=> 1, :category=>"IT",  :user_id => 1, :images => [] }
   }
 
   describe "GET /create" do
@@ -27,6 +27,17 @@ RSpec.describe WishlistsController, type: :controller do
       # expect(flash[:notice]).to match(/abc was successfully created/)
 
       expect(response).to redirect_to(sessions_create_path)
+    end
+
+    it 'should  be able to go to myitem page' do
+      session[:user_id] = 1
+      user = User.create! valid_attributes
+      item = Item.create! new_item
+      
+      get :myitems, :params => {:id => 1}
+      # expect(flash[:notice]).to match(/abc was successfully created/)
+
+      expect(response).to render_template('myitems')
     end
   end
 
@@ -52,5 +63,7 @@ RSpec.describe WishlistsController, type: :controller do
       expect(response).to redirect_to(wishlists_path)
     end
   end
+
+
 
 end
