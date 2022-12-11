@@ -40,7 +40,6 @@ class WishlistsController < ApplicationController
     def create
         wishlist_params = {:user_id => session[:user_id], :item_id => params[:id]}
         @wishlist = Wishlist.create!(wishlist_params)
-        puts params[:id]
         @item = Item.find_by(id: params[:id])
         if @wishlist.save
             flash[:notice] = "#{@item.title} was successfully added to your wishlist"

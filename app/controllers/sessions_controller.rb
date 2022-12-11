@@ -30,7 +30,6 @@ class SessionsController < ApplicationController
 
   def omniauth
     info = request.env['omniauth.auth']
-    puts info['info']
     useremail = info['info']['email']
     name = info['info']['first_name']
     if User.find_by(email: useremail)

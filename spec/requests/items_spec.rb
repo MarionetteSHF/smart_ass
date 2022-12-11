@@ -193,6 +193,19 @@ RSpec.describe "/items", type: :request do
         expect(response).to redirect_to(items_path)
       end
     end
+
+    describe 'search keyword in the database' do
+      it 'find item and render index page' do
+        get search_path, params: {search_term: ['iPhone']}
+        expect(response).to render_template('index')
+      end
+      it 'did not find the item and redirect to main page' do
+        get search_path, params: {search_term: ['bed']}
+        expect(response).to redirect_to(items_path)
+      end
+
+    end
+
   end
 
   describe "search user items" do
