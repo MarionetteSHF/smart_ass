@@ -15,6 +15,26 @@ RSpec.describe "UsersControllers", type: :request do
             # expect(response).to render_template('sessions/show')
         end
     end
+
+    describe 'reset' do
+        # it 'should go to reset page' do
+        #     user =User.create(phone: '6462345569', email: 'wangdazhuang@gmail.com', password: '25-v-1992', name: 'hanfushi')
+        #     # session[:user_id] = 1
+        #     get '/users/1'
+        #     get '/users/1/reset'
+        #     expect(response).to be_successful
+            
+        # end
+
+        # it 'should go to editing page' do
+        #     session[:user_id] = 1
+        #     user =User.create(phone: '6462345569', email: 'wangdazhuang@gmail.com', password: '25-v-1992', name: 'hanfushi')
+            
+        #     get '/users/1/edit'
+        #     expect(response).to be_successful
+            
+        # end
+    end
     # it "should be able to edit profile" do
     #     user = User.create! valid_attributes
     #     # post :create, :params => {:user => {:name => 'a',  :email => 'abd@gmail.com', :phone => '12345678', :password => 'abcabc'}}

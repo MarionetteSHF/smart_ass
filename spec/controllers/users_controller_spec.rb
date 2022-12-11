@@ -54,7 +54,7 @@ RSpec.describe UsersController, type: :controller do
         it 'should not be able to go to editing page' do
             post :create, :params => {:user => {:name => 'a',  :email => 'abd@gmail.com', :phone => '12345678', :password => 'abcabc'}}
 
-            get :edit
+            get :edit, :params => {:id => 1}
             expect(response).to render_template('edit')
 
         end
@@ -62,7 +62,7 @@ RSpec.describe UsersController, type: :controller do
         it 'should not be able to edit password' do
             post :create, :params => {:user => {:name => 'a',  :email => 'abd@gmail.com', :phone => '12345678', :password => 'abcabc'}}
 
-            get :reset
+            get :reset, :params => {:id => 1}
             expect(response).to render_template('reset')
 
         end
