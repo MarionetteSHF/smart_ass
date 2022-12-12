@@ -28,7 +28,7 @@ Scenario: login before post new item
 
 Scenario: could not delete others' items
   When I already logged in as user "1"
-  And I go to the items page
+  And I go to the details page for "ipad"
   Then I should not see "Delete"
 
 Scenario: delete an item
@@ -75,3 +75,43 @@ Scenario: add an item to wishlist and delete it
   And I should be on the wishlists page
   And I go to the wishlists page
   And I should not see "Monitor"
+
+Scenario: can not add their own items to the wishlist
+  When I already logged in as user "1"
+  And I go to the details page for "Monitor"
+  Then I should not see "Add to Wishlist"
+
+Scenario: seach item's name
+  When I already logged in as user "1"
+  And I go to the details page for "bed frame"
+  And I fill in "search_term_" with "ipad"
+  And I press "button"
+  Then I should see "ipad"
+
+Scenario: seach item's category
+  When I already logged in as user "1"
+  And I go to the details page for "bed frame"
+  And I fill in "search_term_" with "Electronics"
+  And I press "button"
+  Then I should see "ipad"
+
+Scenario: leave comment
+  When I already logged in as user "1"
+  And I go to the details page for "iphone"
+  And I fill in "description" with "Nice iPhone!"
+  And I press "Post"
+  Then I should see "Comment added"
+  And I should see "Nice iPhone!"
+
+Scenario: can not leave empty comment
+  When I already logged in as user "1"
+  And I go to the details page for "iphone"
+  And I press "Post"
+  Then I should see "Comment can not be empty!"
+
+Scenario: can not leave a comment consisting only of spaces
+  When I already logged in as user "1"
+  And I go to the details page for "iphone"
+  And I fill in "description" with "         "
+  And I press "Post"
+  Then I should see "Comment can not be empty!"

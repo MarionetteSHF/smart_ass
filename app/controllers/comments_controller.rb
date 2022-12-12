@@ -16,12 +16,15 @@ class CommentsController < ApplicationController
         comment.description = params[:description]
         comment.item_id = params[:id]
         comment.user_id = @current_user
-        
-        comment.save
-        if comment.save
-            flash[:notice] = "comment added"
+        if comment.description.lstrip.rstrip == ""
+            flash[:warning] = "Comment can not be empty!"
         else
-            flash[:notice] = "comment not added"
+            comment.save
+            if comment.save
+                flash[:notice] = "Comment added"
+            else
+                flash[:notice] = "Comment not added"
+            end
         end
         redirect_to item_path(params[:id])
     end
