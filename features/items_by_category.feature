@@ -12,12 +12,12 @@ Background: items in database
   | 4123893788 | Qi   | qi1998@sina.com  | 123456   |
 
   Given the following items exist:
-  | title        | category  | number  | price | user_id |
-  | imac         |           | 1       | 500   | 1       |
-  | ipad         |           | 1       | 1000  | 2       |
-  | bed frame    | furniture | 1       | 100   | 1       |
-  | BMW          | vehicle   | 1       | 40000 | 1       |
-  | Audi         | vehicle   | 1       | 45000 | 1       |
+  | title        | category     | number  | price | user_id |
+  | imac         | Electronics  | 1       | 999   | 1       |
+  | ipad         |              | 1       | 1099  | 2       |
+  | bed frame    | Home & Tools | 1       | 100   | 1       |
+  | Monitor      | Electronics  | 1       | 150   | 1       |
+  | Basketball   | Sports       | 1       | 20    | 1       |
 
 Scenario: add category but not logging in
   When I already logged in as user "1"
@@ -30,16 +30,16 @@ Scenario: add category to existing item
   And I go to the details page for "imac"
   And I follow "Edit"
   Then I should be on the edit page for "imac"
-  And I fill in "Category" with "IT"
+  And I select "Others" from "Category"
   And I press "Save Changes"
-  Then the category of "imac" should be "IT"
+  Then the category of "imac" should be "Others"
 
 Scenario: search category to 
   When I already logged in as user "1"
-  Then I go to the details page for "BMW"
+  Then I go to the details page for "Monitor"
   And  I follow "Show Category"
-  And  I should see "Audi"
-  And  I should not see "iphone"
+  And  I should see "imac"
+  And  I should not see "Basketball"
 
 Scenario: cannot find same category if it is empty
   When I already logged in as user "2"

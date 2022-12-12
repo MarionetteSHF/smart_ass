@@ -20,7 +20,7 @@ end
 When /I already logged in as user "(.*)"/ do |user_id|
   user = User.find_by_id user_id
   visit("/login")
-  fill_in("Email address", :with => user.email)
+  fill_in("Email Address", :with => user.email)
   fill_in("Password", :with=>user.password)
   click_button("Login")
 end

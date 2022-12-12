@@ -11,15 +11,15 @@ Background: items in database
   | 4123893788 | Qi   | qi1998@sina.com  | 123456   |
 
   Given the following items exist:
-  | title        | category  | number  | price | user_id |
-  | imac         |           | 1       | 500   | 1       |
-  | ipad         |           | 1       | 1000  | 2       |
-  | bed frame    | furniture | 1       | 100   | 1       |
-  | BMW          | vehicle   | 1       | 40000 | 1       |
-  | Audi         | vehicle   | 1       | 45000 | 1       |
+  | title        | category     | number  | price | user_id |
+  | iphone       | Electronics  | 1       | 999   | 1       |
+  | ipad         | Electronics  | 1       | 1099  | 2       |
+  | bed frame    | Home & Tools | 1       | 100   | 1       |
+  | Monitor      | Electronics  | 1       | 150   | 1       |
+  | Basketball   | Sports       | 1       | 20    | 1       |
 
 Scenario: login before view item detail
-  When I go to the details page for "Audi"
+  When I go to the details page for "Basketball"
   And I should be on the login page
 
 Scenario: login before post new item
@@ -31,45 +31,47 @@ Scenario: could not delete others' items
   And I go to the items page
   Then I should not see "Delete"
 
-Scenario: delete a item
+Scenario: delete an item
   When I already logged in as user "1"
-  And I go to the details page for "Audi"
+  And I go to the details page for "Basketball"
   Then I press "Delete"
-  Then I should see "Item 'Audi' has been deleted"
+  Then I should see "Item 'Basketball' has been deleted"
   And I should be on the items page
 
-Scenario: create a item
+Scenario: create an item
   When I already logged in as user "1"
   Then I go to the new_item page
   Then I fill in "Title" with "Nike Sneakers"
   And I fill in "Description" with "A brand new sneakers."
-  And I fill in "Category" with "shoes"
+  And I select "Shoes" from "Category"
   And I fill in "Price" with "99"
   And I fill in "Number" with "1"
   And I press "Post"
   Then I should see "Nike Sneakers was successfully created"
   And I should be on the details page for "Nike Sneakers"
+  And I go to the myitems page
+  Then I should see "Nike Sneakers"
 
 Scenario: Error on empty fields
   When I already logged in as user "1"
   Then I go to the new_item page
   And I fill in "Description" with "A brand new sneakers."
-  And I fill in "Category" with "shoes"
+  And I select "Shoes" from "Category"
   And I fill in "Price" with "99"
   And I fill in "Number" with "1"
   And I press "Post"
   Then I should see "Title can't be blank"
 
-Scenario: add a item to wishlist and delete it
+Scenario: add an item to wishlist and delete it
   When I already logged in as user "2"
-  And I go to the details page for "BMW"
+  And I go to the details page for "Monitor"
   Then I follow "Add to Wishlist"
-  Then I should see "BMW was successfully added to your wishlist"
+  Then I should see "Monitor was successfully added to your wishlist"
   And I should be on the wishlists page
-  And I should see "BMW"
-  And I go to the details page for "BMW"
+  And I should see "Monitor"
+  And I go to the details page for "Monitor"
   Then I press "Remove from Wishlist"
-  Then I should see "BMW was removed from wishlist"
+  Then I should see "Monitor was removed from wishlist"
   And I should be on the wishlists page
   And I go to the wishlists page
-  And I should not see "BMW"
+  And I should not see "Monitor"
