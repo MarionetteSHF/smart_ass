@@ -13,19 +13,19 @@ Scenario: Error on empty fields
     Then I should see "invalid username or password"
 
 Scenario: Wrong password
-    When I fill in "Email address" with "abc@gmail.com"
+    When I fill in "Email Address" with "abc@gmail.com"
     And I fill in "Password" with "wrongpassword"
     And I press "Login"
     Then I should see "invalid username or password"
 
 Scenario: Login successfully
-    When I fill in "Email address" with "wangdazhuang@gmail.com"
+    When I fill in "Email Address" with "wangdazhuang@gmail.com"
     And I fill in "Password" with "25-Nov-1992"
     And I press "Login"
     Then I go to the items page
 
-Scenario: Login successfully
-    When I fill in "Email address" with "wangdazhuang@gmail.com"
+Scenario: Logout successfully
+    When I fill in "Email Address" with "wangdazhuang@gmail.com"
     And I fill in "Password" with "25-Nov-1992"
     And I press "Login"
     And I follow "Logout"

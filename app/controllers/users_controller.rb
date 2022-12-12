@@ -16,7 +16,7 @@ class UsersController < ApplicationController
         # || user_params[:password].empty? || user_params[:phone].empty? || user_params[:email].empty?
         @user = User.find_by(email: user_params[:email])
         if @user.present?
-            flash[:notice] = "The email has been used"
+            flash[:notice] = "The email has already been registered"
             render "index"
             return
         end
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
 
         if user_params[:name].empty? || user_params[:password].empty? || user_params[:phone].empty? || user_params[:email].empty?
-            flash[:notice] = "please fill in all information"
+            flash[:notice] = "Please fill in all information"
             
             render "index"
             return
