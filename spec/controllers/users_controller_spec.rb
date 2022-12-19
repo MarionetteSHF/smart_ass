@@ -34,7 +34,7 @@ RSpec.describe UsersController, type: :controller do
             post :create, :params => {:user => {:name => 'aa',  :email => 'abd@gmail.com', :phone => '12345678', :password => 'abcabc'}}
             # expect(flash[:notice]).to match(/abc was successfully created/)
             post :create, :params => {:user => {:name => 'aa',  :email => 'abd@gmail.com', :phone => '12345678', :password => 'abcabc'}}
-            expect(flash[:notice]).to match(/email has been used/)
+            expect(flash[:notice]).to match(/The email has already been registered/)
             expect(response).to render_template('index')
         end
 
