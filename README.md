@@ -1,4 +1,4 @@
-# SmartAss Iteration 1
+# SmartAss
 
 ### Team Members
 
@@ -21,10 +21,6 @@ Lynn Zhu - jz2969
 1. Clone this repo to your development environment
 
 `git clone https://github.com/MarionetteSHF/smart_ass.git`
-
-2. Switch to iteration-1 branch for grading
-
-`git chechout iteration-1`
 
 3. Run `bundle install --without production` to make sure all gems are properly installed
 
@@ -53,6 +49,13 @@ bundle exec rails s
 /items/:id
 /items/:id/edit
 /items/:id/category
+/items/category/:category_name
 /login
-/users
+/users/:id
+/users/:id/edit
+/users/:id/reset
+/wishlists
+/myitems
+/search?search_term=&button=
 ```
+
